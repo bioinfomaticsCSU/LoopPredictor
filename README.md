@@ -48,15 +48,15 @@ pip install looppredictor
 ```
 ## Example usage
 ### 1. Classifying loops for known chromatin interaction
-The testing data were available in /example/K562_classification_example. The structure of folder was shown as below, two kinds of necessary files need to be prepared as input.
+The testing data were available in /example/K562_classification_example. The structure of folder was shown as below, two kinds of necessary files need to be prepared as input, and the classification results will be *_Output.txt.
 ```bash
  example /
    K562_classification_example /
-     featureData /                             # features of corresonding cell line input for the classification
-     tmp /                                     # temporary files generated within running
-     log /                                     # log files generated within running
-     *.bedpe                                   # loops file with .bedpe format
-     *_Output.txt                              # output of loops classification
+     featureData /                 # [necessary input]features of corresonding cell line input for the classification
+     tmp /                         # [intermediate]temporary files generated within running
+     log /                         # [intermediate]log files generated within running
+     *.bedpe                       # [necessary input]loops file with .bedpe format
+     *_Output.txt                  # [output]results of loops classification
 ```
 - Prepare featureData files\
 The classification was taken by the integration of active/inactive histone mark, so the corresonding ChIP-seq peaks of H3K27ac, H3K4me1, and H3K4me3 were the basic requirement. The peak files should be the standard ENCODE [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13) file without head line, shown as below, which were listed in the folder /example/K562_classification_exampleas/featureData.
@@ -102,7 +102,7 @@ cd LoopPredictor/bin
 ```
 
 ### 2. Predicting loops for unknown cell types
-The testing data were available in /example/NIH3T3_prediction_example. The structure of folder was shown as below, there are two kinds of necessary files need to be prepared as input.
+The testing data were available in /example/NIH3T3_prediction_example. The structure of folder was shown as below, the featureData is the necessary input for the prediction, and if you want to investigate the topology structures of a set of specific genes, a bed file containing the regions of genes could be provided. If there is no bed file inputing, the prediction will be performed for the whole genome in de novo, which will take some time.
 ```bash
  example /
    NIH3T3_prediction_example /
@@ -113,4 +113,5 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
      feature_out.txt                        # [intermediate]features are extracted from files within running
      *predicted_result.bedpe                # [output]predicted results of loops
 ```
+We 
 ### 3. Customize model for extensive research
