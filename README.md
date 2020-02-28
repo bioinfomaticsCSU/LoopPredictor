@@ -52,11 +52,11 @@ The testing data were available in /example/K562_classification_example. The str
 ```bash
  example /
    K562_classification_example /
-     featureData /                                 # features of corresonding cell line input for the classification
-     tmp /                                         # temporary files generated within running
-     log /                                         # log files generated within running
-     *.bedpe                                       # loops file with .bedpe format
-     *_Output.txt                                  # output of loops classification
+     featureData /                             # features of corresonding cell line input for the classification
+     tmp /                                     # temporary files generated within running
+     log /                                     # log files generated within running
+     *.bedpe                                   # loops file with .bedpe format
+     *_Output.txt                              # output of loops classification
 ```
 - Prepare featureData files\
 The classification was taken by the integration of active/inactive histone mark, so the corresonding ChIP-seq peaks of H3K27ac, H3K4me1, and H3K4me3 were the basic requirement. The peak files should be the standard ENCODE [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13) file without head line, shown as below, which were listed in the folder /example/K562_classification_exampleas/featureData.
@@ -83,9 +83,8 @@ chr3	138311141	138315068	chr3	138482903	138484460
 chr11	126078482	126084019	chr11	126210767	126227804
 ```
 - Running classification\
-You could run the scripts as following, five parameters 
+The parameters of the script are as following,
 ```bash
-[Usage of ClassifyLoops.sh]
 ./ClassifyLoops.sh /path/to/*.bedpe /path/to/featureData /path/to/output genome filter
 [genome] input the genome of loops
 [filter] integer(1-5): 1. Output all types of loops without filtering;
@@ -97,18 +96,21 @@ You could run the scripts as following, five parameters
 Here is an running example:
 ```bash
 cd LoopPredictor/bin
-./ClassifyLoops.sh /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe  /path/to/example/K562_classification_example/featureData /path/to/output hg19 1
+./ClassifyLoops.sh /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
+                   /path/to/example/K562_classification_example/featureData \
+                   /path/to/output hg19 1
 ```
 
 ### 2. Predicting loops for unknown cell types
-The testing data were available in /example/NIH3T3_prediction_example. The structure of folder was shown as below, two kinds of necessary files need to be prepared as input.
+The testing data were available in /example/NIH3T3_prediction_example. The structure of folder was shown as below, there are two kinds of necessary files need to be prepared as input.
 ```bash
  example /
    NIH3T3_prediction_example /
-     featureData /                                 # features of corresonding cell line input for the classification
-     tmp3 /                                         # temporary files generated within running
-     log /                                         # log files generated within running
-     *.bedpe                                       # loops file with .bedpe format
-     *_Output.txt                                  # output of loops classification
+     featureData /                          # [necessary input]features of corresonding cell line input for the prediction
+     tmp3 /                                 # [intermediate]temporary files generated within running
+     log /                                  # [intermediate]log files generated within running
+     *.bed                                  # [optional input]input bed file of interested regions for loops prediction
+     feature_out.txt                        # [intermediate]features are extracted from files within running
+     *predicted_result.bedpe                # [output]predicted results of loops
 ```
 ### 3. Customize model for extensive research
