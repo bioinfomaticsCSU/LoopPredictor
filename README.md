@@ -47,8 +47,18 @@ or install LoopPredictor using *pip*:
 pip install looppredictor
 ```
 ## Example usage
-### 1. Classifying loops
-The tesing data were available in /example/K562_classification_example. The classification was taken by the integration of active/inactive histone mark, so the ChIP-seq peaks of H3K27ac, H3K4me1, and H3K4me3 were the basic requirement. The peak files should be the standard ENCODE [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13) file without head line, as shown below,
+### 1. Classifying loops for known chromatin interaction
+The tesing data were available in /example/K562_classification_example. The structure of folder was shown as below,
+```bash
+- example
+ - K562_classification_example
+   - featureData/
+   - tmp/
+   - log/
+   K562_annotateLoop_example_annotationOutput.txt
+   K562_annotateLoop_example.bedpe
+```
+The classification was taken by the integration of active/inactive histone mark, so the ChIP-seq peaks of H3K27ac, H3K4me1, and H3K4me3 were the basic requirement. The peak files should be the standard ENCODE [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13) file without head line, shown as below, which were listed in the folder /example/K562_classification_exampleas/featureData.
 ```bash
 chr22	16843445	16868802	.	322	.	2.120582	13.1	-1
 chr22	17024793	17024896	.	985	.	11.483429	2.8	-1
@@ -59,11 +69,11 @@ chr22	17066392	17067403	.	892	.	10.169340	14.8	-1
 chr22	17067959	17068242	.	878	.	9.966456	13.3	-1
 chr22	17068652	17068827	.	835	.	9.358364	4.9	-1
 ```
-You could run the scripts as following,
+You could run the scripts as following, 
 ```bash
 cd LoopPredictor/bin
 ./ClassifyLoops.sh /path/to/example/K562_classification_example/
 ```
 
-### 2. Predicting loops
-### 3. Customize model
+### 2. Predicting loops for unknown cell types
+### 3. Customize model for extensive research
