@@ -114,8 +114,9 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
      *predicted_result.bedpe                # [output]predicted results of loops
 ```
 We provided three typical pre-trained model for the prediction:
-- A Minimum pre-trained model\
-- A Median pre-trained model\
+- A Minimum pre-trained model
+
+- A Median pre-trained model
 - A Maximum pre-trained model
 
 ### 3. Customize model for extensive research
