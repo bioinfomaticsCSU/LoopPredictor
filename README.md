@@ -13,19 +13,25 @@ LoopPredictor is an ensemble machine learning model, used to predict enhancer me
 
 
 ## Installation
-deepsignal is built on Python3. [tombo](https://github.com/nanoporetech/tombo) is required to re-squiggle the raw signals from nanopore reads before running deepsignal.
+LoopPrediction is built on Python 3 and R 3.6.2. Homer is also needed for the annotation of chromatin regions.  
    - Prerequisites:\
-       [Python 3.*](https://www.python.org/)\
-       [tensorflow](https://www.tensorflow.org/) (1.8.0<=tensorflow<=1.13.1)\
-       [tombo](https://github.com/nanoporetech/tombo)
+       [Python](https://www.python.org/)(python>=3.4.0)\
+       [R](https://www.r-project.org/)(R>=3.6.2)\
+       [Homer](http://homer.ucsd.edu/homer/)
    - Dependencies:\
+   python packages:
+       [pandas](https://pandas.pydata.org/)\
        [numpy](http://www.numpy.org/)\
-       [h5py](https://github.com/h5py/h5py)\
-       [statsmodels](https://github.com/statsmodels/statsmodels/)\
-       [scikit-learn](https://scikit-learn.org/stable/)
+       [scikit-learn](https://scikit-learn.org/stable/)\
+       [pathos](https://pypi.org/project/pathos/)\
+   R packages:
+       [stringr](https://stringr.tidyverse.org/)\
+       [GenomicRanges](https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html)\
+       for the most common species:
+       [TxDb.Mmusculus.UCSC.mm10.knownGene](https://bioconductor.org/packages/release/data/annotation/html/TxDb.Mmusculus.UCSC.mm10.knownGene.html)\
 
-### 1. Create an environment
-We highly recommend to use a virtual environment for the installation of deepsignal and its dependencies. A virtual environment can be created and (de)activated as follows by using [conda](https://conda.io/docs/):
+### 1. Create conda environment
+We highly recommend to use a virtual environment for the installation of LoopPredictor and its dependencies. A virtual environment can be created and (de)activated as follows by using [conda](https://conda.io/docs/):
 ```bash
 # create
 conda create -n deepsignalenv python=3.6
