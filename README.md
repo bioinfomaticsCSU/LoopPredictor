@@ -113,5 +113,9 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
      feature_out.txt                        # [intermediate]features are extracted from files within running
      *predicted_result.bedpe                # [output]predicted results of loops
 ```
-We 
+We provided three typical pre-trained model for the prediction:
+- A Minimum pre-trained model\
+- A Median pre-trained model\
+- A Maximum pre-trained model
+
 ### 3. Customize model for extensive research
