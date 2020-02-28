@@ -50,15 +50,15 @@ pip install looppredictor
 ### 1. Classifying loops for known chromatin interaction
 The tesing data were available in /example/K562_classification_example. The structure of folder was shown as below,
 ```bash
-- example
- - K562_classification_example
-   - featureData/
-   - tmp/
-   - log/
-   K562_annotateLoop_example_annotationOutput.txt
-   K562_annotateLoop_example.bedpe
+ example
+   K562_classification_example
+     featureData /                                     # features of corresonding cell line input for the classification
+     tmp /                                             # temporary files generated within running
+     log /                                             # log files generated within running
+     K562_annotateLoop_example.bedpe                   # loops file with .bedpe format
+     K562_annotateLoop_example_Output.txt              # output of loops classification
 ```
-The classification was taken by the integration of active/inactive histone mark, so the ChIP-seq peaks of H3K27ac, H3K4me1, and H3K4me3 were the basic requirement. The peak files should be the standard ENCODE [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13) file without head line, shown as below, which were listed in the folder /example/K562_classification_exampleas/featureData.
+The classification was taken by the integration of active/inactive histone mark, so the corresonding ChIP-seq peaks of H3K27ac, H3K4me1, and H3K4me3 were the basic requirement. The peak files should be the standard ENCODE [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13) file without head line, shown as below, which were listed in the folder /example/K562_classification_exampleas/featureData.
 ```bash
 chr22	16843445	16868802	.	322	.	2.120582	13.1	-1
 chr22	17024793	17024896	.	985	.	11.483429	2.8	-1
