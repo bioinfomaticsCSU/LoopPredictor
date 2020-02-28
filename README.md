@@ -8,8 +8,9 @@ Predicting unknown enhancer-mediated genome topology by an ensemble machine lear
 
 ## What can LoopPredictor do?
 LoopPredictor is an ensemble machine learning model, used to predict enhancer mediated loops in a genome-wide fashion across different cell lines, which is also applicable to different model organisms.
- - Annotate current chromatin interactions and classify the loops into "e-p", "e-e", "p-p" and inactivate types through integrating the enrichment of active/inactive histone mark, distance to Transcription Start Sites(TSS). Which helped users to have a keen insight into topology structure.
-- Predict chromatin interactions for the unknown cell types which lack of 3D profile, LoopPredictor was trained by HiChIP and multi-omics datasets from several cell types, users only need to feed the multi-omics features of interested cell type into the adaptive model, 
+ - Annotate current chromatin interactions and classify the loops into "e-p", "e-e", "p-p" and inactivate types through integrating the enrichment of active/inactive histone mark and distance to Transcription Start Sites(TSS), Which helped users to have a keen insight into topology structure of known cell type.
+- Predict chromatin interactions for the unknown cell types which lack of 3D profile, LoopPredictor was trained by HiChIP and multi-omics datasets from three cell types (K562, GM12878, HCT116), users only need to feed the multi-omics features of interested cell type into the pre-trained adaptive model, the sensitive predictions helped users to have a preliminary investigation of unknown chromatin interaction.
+- Construct customized models for an extensive prediction research. As 3D chromatin detecting technologies are developing at a high speed, LoopPredictor provided an open workframe for users to construct their own model, the features 
 
 
 ## Installation
@@ -26,9 +27,9 @@ LoopPrediction is built on Python 3 and R 3.6.2. Homer is also needed for the an
 The virtual environment of conda was recommended for the installation of LoopPredictor and its dependencies. A virtual environment can be created and (de)activated as follows by using [conda](https://conda.io/docs/):
 ```bash
 # create
-conda create -n deepsignalenv python=3.6
+conda create -n LoopPredictorenv python=3.6
 # activate
-conda activate deepsignalenv
+conda activate LoopPredictorenv
 # deactivate
 conda deactivate
 ```
@@ -45,3 +46,5 @@ or install LoopPredictor using *pip*:
 ```bash
 pip install deepsignal
 ```
+## Example usage
+### 1. 
