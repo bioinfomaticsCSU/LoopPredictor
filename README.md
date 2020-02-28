@@ -48,16 +48,17 @@ pip install looppredictor
 ```
 ## Example usage
 ### 1. Classifying loops for known chromatin interaction
-The tesing data were available in /example/K562_classification_example. The structure of folder was shown as below,
+The testing data were available in /example/K562_classification_example. The structure of folder was shown as below, two kinds of necessary files need to be prepared as input.
 ```bash
- example
-   K562_classification_example
+ example /
+   K562_classification_example /
      featureData /                                     # features of corresonding cell line input for the classification
      tmp /                                             # temporary files generated within running
      log /                                             # log files generated within running
      K562_annotateLoop_example.bedpe                   # loops file with .bedpe format
      K562_annotateLoop_example_Output.txt              # output of loops classification
 ```
+- Prepare featureData files
 The classification was taken by the integration of active/inactive histone mark, so the corresonding ChIP-seq peaks of H3K27ac, H3K4me1, and H3K4me3 were the basic requirement. The peak files should be the standard ENCODE [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13) file without head line, shown as below, which were listed in the folder /example/K562_classification_exampleas/featureData.
 ```bash
 chr22	16843445	16868802	.	322	.	2.120582	13.1	-1
@@ -68,6 +69,19 @@ chr22	17050418	17050537	.	984	.	11.468583	4.2	-1
 chr22	17066392	17067403	.	892	.	10.169340	14.8	-1
 chr22	17067959	17068242	.	878	.	9.966456	13.3	-1
 chr22	17068652	17068827	.	835	.	9.358364	4.9	-1
+```
+- Prepare loops file
+The loops file should be .bedpe format with at least 6 columns, columns were seperated by tab. The minimum columns should include the chrom name, start, end of each anchor, shown as below.
+```bash
+chr22	38290514	38294289	chr22	38680609	38682339
+chr5	96033605	96042289	chr5	96259190	96260539
+chr1	23665194	23673403	chr1	24097536	24108995
+chr3	176676833	176679516	chr3	176741264	176748850
+chr11	63604132	63609924	chr11	63751693	63756217
+chr10	4905979	4915367	chr10	5970350	5979910
+chr17	37005563	37012402	chr17	38801324	38806978
+chr3	138311141	138315068	chr3	138482903	138484460
+chr11	126078482	126084019	chr11	126210767	126227804
 ```
 You could run the scripts as following, 
 ```bash
