@@ -48,5 +48,22 @@ pip install looppredictor
 ```
 ## Example usage
 ### 1. Classifying loops
+The tesing data were available in /example/K562_classification_example. The classification was taken by the integration of active/inactive histone mark, so the ChIP-seq peaks of H3K27ac, H3K4me1, and H3K4me3 were the basic requirement. The peak files should be the standard ENCODE [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13) file without head line, as shown below,
+```bash
+chr22	16843445	16868802	.	322	.	2.120582	13.1	-1
+chr22	17024793	17024896	.	985	.	11.483429	2.8	-1
+chr22	17038424	17038594	.	854	.	9.633610	5.0	-1
+chr22	17050044	17050593	.	465	.	4.143174	2.0	-1
+chr22	17050418	17050537	.	984	.	11.468583	4.2	-1
+chr22	17066392	17067403	.	892	.	10.169340	14.8	-1
+chr22	17067959	17068242	.	878	.	9.966456	13.3	-1
+chr22	17068652	17068827	.	835	.	9.358364	4.9	-1
+```
+You could run the scripts as following,
+```bash
+cd LoopPredictor/bin
+./ClassifyLoops.sh /path/to/example/K562_classification_example/
+```
+
 ### 2. Predicting loops
 ### 3. Customize model
