@@ -101,4 +101,14 @@ cd LoopPredictor/bin
 ```
 
 ### 2. Predicting loops for unknown cell types
+The testing data were available in /example/NIH3T3_prediction_example. The structure of folder was shown as below, two kinds of necessary files need to be prepared as input.
+```bash
+ example /
+   NIH3T3_prediction_example /
+     featureData /                                 # features of corresonding cell line input for the classification
+     tmp3 /                                         # temporary files generated within running
+     log /                                         # log files generated within running
+     *.bedpe                                       # loops file with .bedpe format
+     *_Output.txt                                  # output of loops classification
+```
 ### 3. Customize model for extensive research
