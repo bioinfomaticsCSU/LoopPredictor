@@ -47,10 +47,7 @@ git clone https://github.com/bioinfomaticsCSU/LoopPredictor.git
 cd LoopPredictor
 python setup.py install
 ```
-or install LoopPredictor using *pip*:
-```bash
-pip install looppredictor
-```
+
 ## Example usage
 ### 1. Classifying loops for known chromatin interaction
 The testing data were available in /example/K562_classification_example. The structure of folder was shown as below, two kinds of necessary files need to be prepared as input, and the classification results will be *_Output.txt.
