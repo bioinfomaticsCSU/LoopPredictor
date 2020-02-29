@@ -174,7 +174,14 @@ cd LoopPredictor/bin
 ```
 ### 3. Customize model for extensive research
 - *Step1: prepare trianing data*\
-The training data contains target and multi-omics data, target file shoule be the chromatin interactions in ./bedpe format, which is the prior knowledge to train the model. And the multi-omics data for the corresponding cell line should be prepared as mentioned [above](#step2-prepare-the-input-features)
+The training data contains target and multi-omics data, target file shoule be the chromatin interactions in ./bedpe format, which is the prior knowledge to train the model. The target file should be 8 columns without head line, the final column must be the score of interaction, which is important for the prediction, shown as below,
+```bash
+chr17 75115676 75125670 chr17 76731709 76734226 loop_name_1 1
+chr12 56649935 56654417 chr12 56860478 56865446 loop_name_2 17
+chr18 53026973 53030447 chr18 54302527 54308273 loop_name_3 2
+chr10 15644687 15646877 chr10 15825760 15862181 loop_name_4 7
+chr21 35439250 35465483 chr21 36693517 36722679 loop_name_5 3
+```
+And the multi-omics data for the corresponding cell line should be prepared in the featureData/ folder as mentioned [above](#step2-prepare-the-input-features).
 
-will be processed by the module of "FeatureGenerator", and the 
 - *Step2: Running training workflow*
