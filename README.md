@@ -114,22 +114,16 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
      *predicted_result.bedpe                # [output]predicted results of loops
 ```
 We provided three typical pre-trained model for the prediction:
-- A pre-trained model with minimum features
+- Choose the proper pre-trained model
 We found that 12 features is the minimum number to ensure the predicting power of LoopPredictor, here we provided a minimum model trained with 12 features. If you want to use this model to perform the prediction, please put the following omics features data into featureData/ fold.
-```bash
-ATAC-seq
-H3K27ac ChIP-seq/CUT&RUN
-H3K4me3 ChIP-seq/CUT&RUN
-```
-pre-trained model  | multi-omics feature requirements
+
+pre-trained model  | multi-omics features requirement
  ---- | ----- 
  Minimum model  | ATAC-seq, ChIP-seq/CUT&RUN(H3K27ac, H3K4me3)
  Median model  | ATAC-seq, ChIP-seq/CUT&RUN(H3K27ac, H3K4me3)
  Maximum model | ATAC-seq, ChIP-seq/CUT&RUN(H3K27ac, H3K4me3)
-
-
-- A pre-trained model with median features
-
-- A pre-trained model wit maximum model
+- Prepare the input features
+- Prepare the interested gene file (optional)
+- Running prediction
 
 ### 3. Customize model for extensive research
