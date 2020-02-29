@@ -119,9 +119,9 @@ We found that 12 features is the minimum number to ensure the predicting power o
 
 pre-trained model  | multi-omics features requirement
  ---- | ----- 
- Minimum model  | ATAC-seq, ChIP-seq/CUT&RUN(H3K27ac,H3K4me3)
- Median model  | ATAC-seq, ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3K4me1,H3K9ac,H3K9me3,CTCF),RNA-seq
- Maximum model | ATAC-seq, ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3k4me2,H3K4me1,H3K9ac,H3K9me3,H3K36me3,H3K79me2,CTCF,ELF1,JUND,MAX,YY1),RNA-seq,RRBS
+ Minimum model  | ATAC-seq,ChIP-seq/CUT&RUN(H3K27ac,H3K4me3)
+ Median model  | ATAC-seq,ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3K4me1,H3K9ac,H3K9me3,CTCF),RNA-seq
+ Maximum model | ATAC-seq,ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3k4me2,H3K4me1,H3K9ac,H3K9me3,H3K36me3,H3K79me2,CTCF,ELF1,JUND,MAX,YY1),RNA-seq,Methylation
 - Prepare the input features\
 - Prepare the interested gene file (optional)
 - Running prediction
