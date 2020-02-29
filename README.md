@@ -7,8 +7,8 @@ Predicting unknown enhancer-mediated genome topology by an ensemble machine lear
  [1. Create conda environment](#1.Create-conda-environment)\
  [2. Install LoopPredictor](#2.Install-LoopPredictor)
 - [Example usage](#Example-usage)\
- [1. Classifying loops for known chromatin interaction](#1.Classifying-loops-for-known-chromatin-interaction)
- [2. Predicting loops for unknown cell types](#2.Predicting-loops-for-unknown-cell-types)
+ [1. Classifying loops for known chromatin interaction](#1.Classifying-loops-for-known-chromatin-interaction)\
+ [2. Predicting loops for unknown cell types](#2.Predicting-loops-for-unknown-cell-types)\
  [3. Customize model for extensive research](#3.Customize-model-for-extensive-research)
 
 ## What can LoopPredictor do?
@@ -148,5 +148,5 @@ chr1	1000206	1000207	K562_Rep3_RRBS	53	-	1000206	1000207	155,255,0	53	26
 - *Step4: Running prediction*
 
 ### 3. Customize model for extensive research
-- prepare trianing data
-- 
+- *Step1: prepare trianing data*
+- *Step2: Running training workflow*
