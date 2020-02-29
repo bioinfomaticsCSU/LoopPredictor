@@ -182,6 +182,7 @@ chr18 53026973 53030447 chr18 54302527 54308273 loop_name_3 2
 chr10 15644687 15646877 chr10 15825760 15862181 loop_name_4 7
 chr21 35439250 35465483 chr21 36693517 36722679 loop_name_5 3
 ```
-And the multi-omics data for the corresponding cell line should be prepared in the featureData/ folder as mentioned [above](#step2-prepare-the-input-features).
+The multi-omics data for the corresponding cell line should be prepared in the featureData/ folder as mentioned [above](#step2-prepare-the-input-features).
 
 - *Step2: Running training workflow*
+
