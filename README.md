@@ -101,7 +101,7 @@ ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <in
 Here is an running example:
 ```bash
 cd LoopPredictor/bin
-./ClassifyLoops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
+python ./classifyLoops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
                    -f /path/to/example/K562_classification_example/featureData \
                    -o /path/to/example/K562_classification_example -g hg19 -i 1
 ```
@@ -162,7 +162,7 @@ LoopPredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <mo
 Here is an running example:
 ```bash
 cd LoopPredictor/bin
-./LoopPredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
+python ./LoopPredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
                    -f /path/to/example/NIH3T3_prediction_example/featureData \
                    -g mm10
                    -t /path/to/trained_model/features_median_forTraining.fix
