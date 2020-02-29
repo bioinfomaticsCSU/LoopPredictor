@@ -8,6 +8,8 @@ Predicting unknown enhancer-mediated genome topology by an ensemble machine lear
  [2. Install LoopPredictor](#2.Install-LoopPredictor)
 - [Example usage](#Example-usage)\
  [1. Classifying loops for known chromatin interaction](#1.Classifying-loops-for-known-chromatin-interaction)
+ [2. Predicting loops for unknown cell types](#2.Predicting-loops-for-unknown-cell-types)
+ [3. Customize model for extensive research](#3.Customize-model-for-extensive-research)
 
 ## What can LoopPredictor do?
 LoopPredictor is an ensemble machine learning model, used to predict enhancer mediated loops in a genome-wide fashion across different cell lines, which is also applicable to different model organisms.
@@ -61,7 +63,7 @@ The testing data were available in /example/K562_classification_example. The str
      *.bedpe                       # [necessary input]loops file with .bedpe format
      *_Output.txt                  # [output]results of loops classification
 ```
-- Prepare featureData files\
+- *Step1: Prepare featureData files*\
 The classification was taken by the integration of active/inactive histone mark, so the corresonding ChIP-seq peaks of H3K27ac, H3K4me1, and H3K4me3 were the basic requirement. The peak files should be the standard ENCODE [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13) file without head line, shown as below, which were listed in the folder /example/K562_classification_exampleas/featureData.
 ```bash
 chr22	16843445	16868802	.	322	.	2.120582	13.1	-1
@@ -73,7 +75,7 @@ chr22	17066392	17067403	.	892	.	10.169340	14.8	-1
 chr22	17067959	17068242	.	878	.	9.966456	13.3	-1
 chr22	17068652	17068827	.	835	.	9.358364	4.9	-1
 ```
-- Prepare loops file\
+- *Step2: Prepare loops file*\
 The loops file should be .bedpe format with at least 6 columns, columns were seperated by tab. The minimum columns should include the chrom name, start, end of each anchor, shown as below.
 ```bash
 chr22	38290514	38294289	chr22	38680609	38682339
@@ -85,7 +87,7 @@ chr17	37005563	37012402	chr17	38801324	38806978
 chr3	138311141	138315068	chr3	138482903	138484460
 chr11	126078482	126084019	chr11	126210767	126227804
 ```
-- Running classification\
+- *Step3: Running classification*\
 The parameters of the script are as following,
 ```bash
 ./ClassifyLoops.py -l /path/to/loop*.bedpe -f /path/to/featureData -o /path/to/output -g genome -i integer
@@ -117,7 +119,7 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
      *predicted_result.bedpe                # [output]predicted results of loops
 ```
 
-- Choose the proper pre-trained model\
+- *Step1: Choose the proper pre-trained model*\
 We provided three typical pre-trained model for the prediction, which could be found in folder /trained_model/. The model should be chosen to match the features you can get access to.
 
 pre-trained model | multi-omics features requirement
@@ -126,7 +128,7 @@ pre-trained model | multi-omics features requirement
  Median model  | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3K4me1,H3K9ac,H3K9me3,CTCF), -RNA-seq
  Maximum model | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3k4me2,H3K4me1,H3K9ac,H3K9me3,H3K36me3,H3K79me2,CTCF,ELF1,JUND,MAX,YY1), -RNA-seq, -Methylation
 
-- Prepare the input features\
+- *Step2: Prepare the input features*\
 The multi-omics features data should be put into folder featureData/.
 For ATAC-seq and ChIP-seq/CUT&RUN data, the format should be standard [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13), as shown above.
 For RNA-seq data, we recommend to use [Homer](http://homer.ucsd.edu/homer/) to build 
@@ -141,9 +143,9 @@ chr1	1000198	1000199	K562_Rep3_RRBS	46	+	1000198	1000199	105,255,0	46	20
 chr1	1000199	1000200	K562_Rep3_RRBS	53	-	1000199	1000200	105,255,0	53	15
 chr1	1000206	1000207	K562_Rep3_RRBS	53	-	1000206	1000207	155,255,0	53	26
 ```
-- Prepare the interested gene file (optional)
+- *Step3: Prepare the interested gene file (optional)*
 
-- Running prediction
+- *Step4: Running prediction*
 
 ### 3. Customize model for extensive research
 - prepare trianing data
