@@ -4,6 +4,7 @@ Predicting unknown enhancer-mediated genome topology by an ensemble machine lear
 ## Contents
 - [What can LoopPredictor do?](#What-can-LoopPredictor-do?)
 - [Installation](#Installation)
+ -[1. Create conda environment](#1.Create-conda-environment)
 - [Example usage](#Example-usage)
 
 ## What can LoopPredictor do?
