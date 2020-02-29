@@ -144,6 +144,7 @@ chr1	1000199	1000200	K562_Rep3_RRBS	53	-	1000199	1000200	105,255,0	53	15
 chr1	1000206	1000207	K562_Rep3_RRBS	53	-	1000206	1000207	155,255,0	53	26
 ```
 - *Step3: Prepare the interested gene file (optional)*
+If you want to detect the enhancer-mediated interactions for a set of interested gene, we recommend to extract the name of genes to the coordinates on the chromatin by [UCSC Table Browser](https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=804701707_AsIp981xpMMb6T4p83FooaNvjQup). The coordinates should be ./bed format with at least 3 columns(chrom start end).
 
 - *Step4: Running prediction*
 
