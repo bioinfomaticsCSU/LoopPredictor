@@ -115,16 +115,29 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
 ```
 
 - Choose the proper pre-trained model\
-We provided three typical pre-trained model for the prediction, which could be found in folder trained_model/
+We provided three typical pre-trained model for the prediction, which could be found in folder /trained_model/. The model should be chosen to match the features you can get access to.
 
 pre-trained model | multi-omics features requirement
  ---- | ----- 
  Minimum model | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3)
  Median model  | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3K4me1,H3K9ac,H3K9me3,CTCF), -RNA-seq
  Maximum model | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3k4me2,H3K4me1,H3K9ac,H3K9me3,H3K36me3,H3K79me2,CTCF,ELF1,JUND,MAX,YY1), -RNA-seq, -Methylation
-- Prepare the input features\ 
-If you want to use this model to perform the prediction, please put the following omics features data into featureData/ fold.
 
+- Prepare the input features\
+The multi-omics features data should be put into folder featureData/.
+For ATAC-seq and ChIP-seq/CUT&RUN data, the format should be standard [narrowPeak/broadPeak](http://genome.ucsc.edu/FAQ/FAQformat#format13), as shown above.
+For RNA-seq data, we recommend to use [Homer](http://homer.ucsd.edu/homer/) to build 
+tag files for the alignment, and then "findPeaks" function is utilized to detect the highly enriched regions, the output from "findPeaks" can be used as the feature file of RNA-seq data after removing the head line.
+For Methylation data, we recommend to download the .bedRrbs format of RRBS data from [ENCODE](https://www.encodeproject.org/), 
+which is shown as below,
+```bash
+chr1	1000170	1000171	K562_Rep3_RRBS	46	+	1000170	1000171	155,255,0	46	35
+chr1	1000190	1000191	K562_Rep3_RRBS	46	+	1000190	1000191	105,255,0	46	15
+chr1	1000191	1000192	K562_Rep3_RRBS	53	-	1000191	1000192	55,255,0	53	9
+chr1	1000198	1000199	K562_Rep3_RRBS	46	+	1000198	1000199	105,255,0	46	20
+chr1	1000199	1000200	K562_Rep3_RRBS	53	-	1000199	1000200	105,255,0	53	15
+chr1	1000206	1000207	K562_Rep3_RRBS	53	-	1000206	1000207	155,255,0	53	26
+```
 - Prepare the interested gene file (optional)
 
 - Running prediction
