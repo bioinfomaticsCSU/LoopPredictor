@@ -146,10 +146,10 @@ chr1	1000198	1000199	K562_Rep3_RRBS	46	+	1000198	1000199	105,255,0	46	20
 chr1	1000199	1000200	K562_Rep3_RRBS	53	-	1000199	1000200	105,255,0	53	15
 chr1	1000206	1000207	K562_Rep3_RRBS	53	-	1000206	1000207	155,255,0	53	26
 ```
-- *Step3: Prepare the interested gene file (optional)*
+- *Step3: Prepare the interested gene file (optional)*\
 If you want to detect the enhancer-mediated interactions for a set of interested gene, we recommend to extract the name of genes to the coordinates on the chromatin by [UCSC Table Browser](https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=804701707_AsIp981xpMMb6T4p83FooaNvjQup). The coordinates should be ./bed format with at least 3 columns(chrom,start,end).
 
-- *Step4: Running prediction*
+- *Step4: Running prediction*\
 After preparing the input files, you can run the script "LoopPredictor.py" to perform the prediction.
 The parameters of the script are as following,
 ```bash
@@ -173,5 +173,8 @@ cd LoopPredictor/bin
                    -o /path/to/output -g hg19 -i 1
 ```
 ### 3. Customize model for extensive research
-- *Step1: prepare trianing data*
+- *Step1: prepare trianing data*\
+The training data contains target and multi-omics data, target file shoule be the chromatin interactions in ./bedpe format, which is the prior knowledge to train the model. And the multi-omics data for the corresponding cell line should be prepared as mentioned [above](#Step2: Prepare the input features)
+
+will be processed by the module of "FeatureGenerator", and the 
 - *Step2: Running training workflow*
