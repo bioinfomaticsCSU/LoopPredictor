@@ -106,7 +106,7 @@ Here is an running example:
 cd LoopPredictor/bin
 ./ClassifyLoops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
                    -f /path/to/example/K562_classification_example/featureData \
-                   -o /path/to/output -g hg19 -i 1
+                   -o /path/to/example/K562_classification_example -g hg19 -i 1
 ```
 
 ### 2. Predicting loops for unknown cell types
@@ -170,11 +170,11 @@ cd LoopPredictor/bin
                    -g mm10
                    -t /path/to/trained_model/features_median_forTraining.fix
                    -m /path/to/trained_model/GBRT_trained_model_median.m
-                   -o /path/to/output -g hg19 -i 1
+                   -o /path/to/example/NIH3T3_prediction_example -g hg19 -i 1
 ```
 ### 3. Customize model for extensive research
 - *Step1: prepare trianing data*\
-The training data contains target and multi-omics data, target file shoule be the chromatin interactions in ./bedpe format, which is the prior knowledge to train the model. And the multi-omics data for the corresponding cell line should be prepared as mentioned [above](#*Step2:Prepare-the-input-features*)
+The training data contains target and multi-omics data, target file shoule be the chromatin interactions in ./bedpe format, which is the prior knowledge to train the model. And the multi-omics data for the corresponding cell line should be prepared as mentioned [above](##*Step2:Prepare-the-input-features*)
 
 will be processed by the module of "FeatureGenerator", and the 
 - *Step2: Running training workflow*
