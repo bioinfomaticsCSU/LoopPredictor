@@ -90,8 +90,11 @@ chr11	126078482	126084019	chr11	126210767	126227804
 - *Step3: Running classification*\
 The parameters of the script are as following,
 ```bash
-./ClassifyLoops.py -l /path/to/loop*.bedpe -f /path/to/featureData -o /path/to/output -g genome -i integer
--g [string]genome of loops
+ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <integer>
+-l [string] loop file with ./bedpe format to be classified.
+-f [string] absolute path of the featureData folder.
+-g [string] genome of loops.
+-o [string] path to save the output result. 
 -i [integer(1-5)] 1. Output all types of loops without filtering;
                   2. Output only "e-p"/"p-e" type loops;
                   3. Output only "e-e" type loops;
@@ -101,9 +104,9 @@ The parameters of the script are as following,
 Here is an running example:
 ```bash
 cd LoopPredictor/bin
-./ClassifyLoops.sh /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
-                   /path/to/example/K562_classification_example/featureData \
-                   /path/to/output hg19 1
+./ClassifyLoops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
+                   -f /path/to/example/K562_classification_example/featureData \
+                   -o /path/to/output -g hg19 -i 1
 ```
 
 ### 2. Predicting loops for unknown cell types
@@ -144,10 +147,31 @@ chr1	1000199	1000200	K562_Rep3_RRBS	53	-	1000199	1000200	105,255,0	53	15
 chr1	1000206	1000207	K562_Rep3_RRBS	53	-	1000206	1000207	155,255,0	53	26
 ```
 - *Step3: Prepare the interested gene file (optional)*
-If you want to detect the enhancer-mediated interactions for a set of interested gene, we recommend to extract the name of genes to the coordinates on the chromatin by [UCSC Table Browser](https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=804701707_AsIp981xpMMb6T4p83FooaNvjQup). The coordinates should be ./bed format with at least 3 columns(chrom start end).
+If you want to detect the enhancer-mediated interactions for a set of interested gene, we recommend to extract the name of genes to the coordinates on the chromatin by [UCSC Table Browser](https://genome.ucsc.edu/cgi-bin/hgTables?hgsid=804701707_AsIp981xpMMb6T4p83FooaNvjQup). The coordinates should be ./bed format with at least 3 columns(chrom,start,end).
 
 - *Step4: Running prediction*
-
+After preparing the input files, you can run the script "LoopPredictor.py" to perform the prediction.
+The parameters of the script are as following,
+```bash
+LoopPredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <model> -c <cutoff> -o <output_name>
+-b [string] coordinate .bed file of a set of interested genes.
+-f [string] absolute path of the featureData folder.
+-g [string] genome of the features data.
+-t [string] .fix file for the pre-trained model.
+-m [string] the pre-trained model chosen to use.
+-c [integer(>0)] the cutoff of loop score to filter the predicted output loops. 
+-o [string] path to save the output result.
+```
+Here is an running example:
+```bash
+cd LoopPredictor/bin
+./LoopPredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
+                   -f /path/to/example/NIH3T3_prediction_example/featureData \
+                   -g mm10
+                   -t /path/to/trained_model/features_median_forTraining.fix
+                   -m /path/to/trained_model/GBRT_trained_model_median.m
+                   -o /path/to/output -g hg19 -i 1
+```
 ### 3. Customize model for extensive research
 - *Step1: prepare trianing data*
 - *Step2: Running training workflow*
