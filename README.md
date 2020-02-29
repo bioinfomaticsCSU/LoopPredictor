@@ -100,8 +100,8 @@ ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <in
 ```
 Here is an running example:
 ```bash
-cd LoopPredictor/bin
-python ./classifyLoops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
+cd LoopPredictor/
+python ./bin/classifyLoops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
                    -f /path/to/example/K562_classification_example/featureData \
                    -o /path/to/example/K562_classification_example -g hg19 -i 1
 ```
@@ -161,13 +161,14 @@ LoopPredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <mo
 ```
 Here is an running example:
 ```bash
-cd LoopPredictor/bin
-python ./LoopPredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
+cd LoopPredictor/
+python ./bin/LoopPredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
                    -f /path/to/example/NIH3T3_prediction_example/featureData \
-                   -g mm10
-                   -t /path/to/trained_model/features_median_forTraining.fix
-                   -m /path/to/trained_model/GBRT_trained_model_median.m
-                   -o /path/to/example/NIH3T3_prediction_example -g hg19 -i 1
+                   -g mm10 \
+                   -t /path/to/trained_model/features_median_forTraining.fix \
+                   -m /path/to/trained_model/GBRT_trained_model_median.m \
+                   -c 1 \
+                   -o /path/to/example/NIH3T3_prediction_example
 ```
 ### 3. Customize model for extensive research
 - *Step1: prepare trianing data*\
