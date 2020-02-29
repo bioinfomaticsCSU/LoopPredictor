@@ -85,13 +85,13 @@ chr11	126078482	126084019	chr11	126210767	126227804
 - Running classification\
 The parameters of the script are as following,
 ```bash
-./ClassifyLoops.sh /path/to/*.bedpe /path/to/featureData /path/to/output genome filter
-[genome] input the genome of loops
-[filter] integer(1-5): 1. Output all types of loops without filtering;
-                       2. Output only "e-p"/"p-e" type loops;
-                       3. Output only "e-e" type loops;
-                       4. Output only "p-p" type loops;
-                       5. Output only "inactivate-*"/"*-inativate" type loops;
+./ClassifyLoops.py -l /path/to/loop*.bedpe -f /path/to/featureData -o /path/to/output -g genome -i integer
+-g [string]genome of loops
+-i [integer(1-5)] 1. Output all types of loops without filtering;
+                  2. Output only "e-p"/"p-e" type loops;
+                  3. Output only "e-e" type loops;
+                  4. Output only "p-p" type loops;
+                  5. Output only "inactivate-*"/"*-inativate" type loops;
 ```
 Here is an running example:
 ```bash
@@ -113,17 +113,22 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
      feature_out.txt                        # [intermediate]features are extracted from files within running
      *predicted_result.bedpe                # [output]predicted results of loops
 ```
-We provided three typical pre-trained model for the prediction:
-- Choose the proper pre-trained model\
-We found that 12 features is the minimum number to ensure the predicting power of LoopPredictor, here we provided a minimum model trained with 12 features. If you want to use this model to perform the prediction, please put the following omics features data into featureData/ fold.
 
-pre-trained model  | multi-omics features requirement
+- Choose the proper pre-trained model\
+We provided three typical pre-trained model for the prediction, which could be found in folder trained_model/
+
+pre-trained model | multi-omics features requirement
  ---- | ----- 
- Minimum model  | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3)
+ Minimum model | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3)
  Median model  | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3K4me1,H3K9ac,H3K9me3,CTCF), -RNA-seq
  Maximum model | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3k4me2,H3K4me1,H3K9ac,H3K9me3,H3K36me3,H3K79me2,CTCF,ELF1,JUND,MAX,YY1), -RNA-seq, -Methylation
-- Prepare the input features\
+- Prepare the input features\ 
+If you want to use this model to perform the prediction, please put the following omics features data into featureData/ fold.
+
 - Prepare the interested gene file (optional)
+
 - Running prediction
 
 ### 3. Customize model for extensive research
+- prepare trianing data
+- 
