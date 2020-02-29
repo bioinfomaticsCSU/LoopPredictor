@@ -123,9 +123,7 @@ H3K4me3 ChIP-seq/CUT&RUN
 ```
 pre-trained model  | multi-omics feature requirements
  ---- | ----- 
- Minimum model  | ATAC-seq\ 
- H3K27ac ChIP-seq/CUT&RUN \ 
- H3K4me3 ChIP-seq/CUT&RUN
+ Minimum model  | ATAC-seq  H3K27ac ChIP-seq/CUT&RUN  H3K4me3 ChIP-seq/CUT&RUN
  Median model  | 
  Maximum model | 
 
