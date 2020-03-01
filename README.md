@@ -124,7 +124,7 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
 ```
 
 #### *Step1: Choose the proper pre-trained model*
-We provided three typical pre-trained model for the prediction, which could be download from this [link](). The model should be chosen to match the features you can get access to.
+We provided three typical pre-trained model for the prediction, which could be downloaded from this [link](https://drive.google.com/open?id=1hIAV68653JtI-FrWidJ8vitZJtmLHNiB). The model should be chosen to match the features you can get access to.
 
 pre-trained model | multi-omics features requirement
  ---- | ----- 
