@@ -2,14 +2,14 @@
 ## Predicting unknown enhancer-mediated genome topology by an ensemble machine learning model
 
 ## Contents
-- [What can LoopPredictor do?](#What-can-LoopPredictor-do?)
-- [Installation](#Installation)\
- [1. Create conda environment](#1Create-conda-environment)\
- [2. Install LoopPredictor](#2Install-LoopPredictor)
-- [Example usage](#Example-usage)\
- [1. Classifying loops for known chromatin interaction](#1Classifying-loops-for-known-chromatin-interaction)\
- [2. Predicting loops for unknown cell types](#2Predicting-loops-for-unknown-cell-types)\
- [3. Customize model for extensive research](#3Customize-model-for-extensive-research)
+- [What can LoopPredictor do?](#what-can-looppredictor-do?)
+- [Installation](#installation)\
+ [1. Create conda environment](#1create-conda-environment)\
+ [2. Install LoopPredictor](#2install-looppredictor)
+- [Example usage](#example-usage)\
+ [1. Classifying loops for known chromatin interaction](#1classifying-loops-for-known-chromatin-interaction)\
+ [2. Predicting loops for unknown cell types](#2predicting-loops-for-unknown-cell-types)\
+ [3. Customize model for extensive research](#3customize-model-for-extensive-research)
 
 ## What can LoopPredictor do?
 LoopPredictor is an ensemble machine learning model, used to predict enhancer mediated loops in a genome-wide fashion across different cell lines, which is also applicable to different model organisms.
