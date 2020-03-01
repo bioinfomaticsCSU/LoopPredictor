@@ -1,6 +1,6 @@
 # <img src="doc/lp_logo_horiz.png" width="400">
 [![Travis CI](https://travis-ci.org/tterb/yt2mp3.svg?branch=master)](https://travis-ci.org/tterb/yt2mp3)
-[![MIT License](https://img.shields.io/apm/l/atomic-design-ui.svg?)](https://github.com/tterb/atomic-design-ui/blob/master/LICENSEs)
+[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
  Predicting unknown enhancer-mediated genome topology by an ensemble machine learning model
@@ -25,7 +25,7 @@ LoopPredictor is an ensemble machine learning model, used to predict enhancer me
 ## Installation
 LoopPrediction is built on Python 3 and R 3.6.2. Homer is also needed for the annotation of chromatin regions.  
    - **Prerequisites:**\
-       [Python](https://www.python.org/)(>=3.4.0), [R](https://www.r-project.org/)(>=3.6.2), [Homer](http://homer.ucsd.edu/homer/)
+       [Python](https://www.python.org/)(>=3.6.0), [R](https://www.r-project.org/)(>=3.6.2), [Homer](http://homer.ucsd.edu/homer/)
    - **Dependencies:**\
    **python packages:**
        [pandas](https://pandas.pydata.org/), [numpy](http://www.numpy.org/), [scikit-learn](https://scikit-learn.org/stable/), [pathos](https://pypi.org/project/pathos/)\
