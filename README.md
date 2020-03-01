@@ -24,9 +24,9 @@ LoopPredictor is an ensemble machine learning model, used to predict enhancer me
 
 ## Installation
 LoopPrediction is built on Python 3 and R 3.6.2. Homer is also needed for the annotation of chromatin regions.  
-   - Prerequisites:\
+   - **Prerequisites:**\
        [Python](https://www.python.org/)(>=3.4.0), [R](https://www.r-project.org/)(>=3.6.2), [Homer](http://homer.ucsd.edu/homer/)
-   - Dependencies:\
+   - **Dependencies:**\
    **python packages:**
        [pandas](https://pandas.pydata.org/), [numpy](http://www.numpy.org/), [scikit-learn](https://scikit-learn.org/stable/), [pathos](https://pypi.org/project/pathos/)\
    **R packages:**
