@@ -1,0 +1,2 @@
+include looppredictor/Rscript/*
+include looppredictor/Bash/*
