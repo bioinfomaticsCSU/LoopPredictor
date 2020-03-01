@@ -1,4 +1,4 @@
-# <img src="doc/lp_logo.png" width="200">
+# <img src="doc/lp_logo_horiz.png" width="400">
 Predicting unknown enhancer-mediated genome topology by an ensemble machine learning model
 
 ## Contents
