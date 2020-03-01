@@ -32,7 +32,7 @@ LoopPrediction is built on Python 3 and R 3.6.2. Homer is also needed for the an
 The virtual environment of conda was recommended for the installation of LoopPredictor and its dependencies. A virtual environment can be created and (de)activated as follows by using [conda](https://conda.io/docs/):
 ```bash
 # create
-conda create -n LoopPredictor-env python=3.6 pandas numpy scikit-learn pathos
+conda create -n LoopPredictor-env python=3.6 pandas numpy scikit-learn=0.20.3 pathos
 # activate
 conda activate LoopPredictor-env
 # deactivate
@@ -98,7 +98,7 @@ ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <in
                   4. Output only "p-p" type loops;
                   5. Output only "inactivate-*"/"*-inativate" type loops;
 ```
-Here is an running example:
+Here is a running example:
 ```bash
 cd LoopPredictor/
 python ./bin/classifyLoops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
@@ -159,7 +159,7 @@ LoopPredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <mo
 -c [integer(>0)] the cutoff of loop score to filter the predicted output loops. 
 -o [string] path to save the output result.
 ```
-Here is an running example:
+Here is a running example:
 ```bash
 cd LoopPredictor/
 python ./bin/LoopPredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
@@ -183,4 +183,22 @@ chr21 35439250 35465483 chr21 36693517 36722679 loop_name_5 3
 The multi-omics data for the corresponding cell line should be prepared in the featureData/ folder as mentioned [above](#step2-prepare-the-input-features).
 
 - *Step2: Running training workflow*
-
+After preparing the input training data, you can run the script "Customized_GBRT_trainer.py" to train your own model.
+The parameters of the script are as following,
+```bash
+Customized_GBRT_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_path> -n <output_name>
+-t [string] target file of a set of loops with score to train the model, which is .bedpe format.
+-f [string] absolute path of the featureData folder.
+-g [string] genome of the features data.
+-o [string] path to save the output result.
+-n [string] output name of the model.
+```
+Here is a running example:
+```bash
+cd LoopPredictor/
+python ./bin/Customized_GBRT_trainer.py -b /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
+                   -f /path/to/example/HCT116_custom_model_example/featureData \
+                   -g hg19 \
+                   -o /path/to/example/NIH3T3_prediction_example \
+                   -n /path/to/example/NIH3T3_prediction_example/HCT116_custom_model.m
+```
