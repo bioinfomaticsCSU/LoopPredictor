@@ -1,4 +1,4 @@
-# LoopPredictor
+# LoopPredictor ![logo](doc/lp_logo.png)
 Predicting unknown enhancer-mediated genome topology by an ensemble machine learning model
 
 ## Contents
