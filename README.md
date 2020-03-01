@@ -175,6 +175,17 @@ python ./bin/LoopPredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_
                    -o /path/to/example/NIH3T3_prediction_example
 ```
 ### 3. Customize model for extensive research
+The testing data were available in /example/HCT116_custom_model_example. The structure of folder was shown as below, \
+```bash
+ example /
+   HCT116_custom_model_example /
+     featureData /                          # [necessary input]features of corresonding cell line input for training model
+     tmp /                                  # [intermediate]temporary files generated within running
+     log /                                  # [intermediate]log files generated within running
+     *.bedpe                                # [necessary input]input bed file of interested regions for loops prediction
+     feature_out.txt                        # [intermediate]features are extracted from files within running
+     *.m                                    # [output]the name of output model
+```
 - *Step1: prepare trianing data*\
 The training data contains target and multi-omics data, target file shoule be the chromatin interactions in ./bedpe format, which is the prior knowledge to train the model. The target file should be 8 columns without head line, the final column must be the score of interaction, which is important for the prediction, shown as below,
 ```bash
@@ -200,7 +211,7 @@ Customized_GBRT_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_pa
 Here is a running example:
 ```bash
 cd LoopPredictor/
-python ./bin/Customized_GBRT_trainer.py -b /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
+python ./bin/Customized_GBRT_trainer.py -t /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
                    -f /path/to/example/HCT116_custom_model_example/featureData \
                    -g hg19 \
                    -o /path/to/example/HCT116_custom_model_example \
