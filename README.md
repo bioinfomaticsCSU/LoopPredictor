@@ -199,6 +199,6 @@ cd LoopPredictor/
 python ./bin/Customized_GBRT_trainer.py -b /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
                    -f /path/to/example/HCT116_custom_model_example/featureData \
                    -g hg19 \
-                   -o /path/to/example/NIH3T3_prediction_example \
-                   -n /path/to/example/NIH3T3_prediction_example/HCT116_custom_model.m
+                   -o /path/to/example/HCT116_custom_model_example \
+                   -n /path/to/example/HCT116_custom_model_example/HCT116_custom_model.m
 ```
