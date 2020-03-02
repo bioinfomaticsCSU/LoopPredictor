@@ -22,7 +22,7 @@ fi
 
 for filename in $annoFile
 do
-Rscript $basepath/Rscript/GRangesTool.R $targetFile $filename $userpath/tmp/feature_tmp_${filename}_anchor1 $userpath/tmp/feature_tmp_${filename}_anchor2 &
+Rscript $basepath/Rscript/GRangesTool.R $targetFile $feature/$filename $userpath/tmp/feature_tmp_${filename}_anchor1 $userpath/tmp/feature_tmp_${filename}_anchor2 &
 done >> $userpath/log/GRange_Log.txt
 wait
 echo "--------------Feature extraction done!----------------"
@@ -38,5 +38,5 @@ out_file=$(basename -- "$targetFile")
 out_filename="${out_file%.*}_Output.txt"
 
 echo "--------------Merging features!-----------------------"
-Rscript $basepath/Rscript/MergeFeature_custom.R  $targetFile $userpath/tmp $userpath/$out_filename
+Rscript $basepath/Rscript/MergeFeature_custom.R  $targetFile $userpath/tmp $userpath/feature_out.txt
 

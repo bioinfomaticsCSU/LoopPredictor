@@ -1,4 +1,3 @@
-#!/usr/bin/python
 import collections
 import getopt
 import os
@@ -14,15 +13,16 @@ from looppredictor import trainingtool
 
 #main function
 #-----------------------------------------------------------------------------------------------------------------------
-def main(argv):
+def main():
    time_start = time.time()
-   filter_me1 = ''
-   filter_me3 = ''
-   filter_ac= ''
-   infile_loop=''
-   infile_anchor = ''
-   filter_hmm= ''
-   genome=''
+   bedfile = ''
+   featurePath = ''
+   genome= ''
+   output_name=''
+   trainfile = ''
+   model= ''
+   cutoff=''
+   argv=sys.argv[1:]
    try:
       opts, args = getopt.getopt(argv,"b:f:o:g:t:m:c:",["bedfile=","featurePath=","outPath=","genome=","trainfile=","model=","cutoff="])
    except getopt.GetoptError:
@@ -100,4 +100,4 @@ def main(argv):
 
 
 if __name__ == "__main__":
-   main(sys.argv[1:])
+   main()

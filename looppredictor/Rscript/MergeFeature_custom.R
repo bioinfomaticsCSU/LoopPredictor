@@ -27,5 +27,5 @@ feature_merge[is.na(feature_merge)] <- 0
 #feature_filter<-subset(feature_merge,feature_merge[,num_27ac+3]>0 | feature_merge[,num_homer+3]<=2000)
 #print(feature_filter)
 #feature_filter <- as.data.frame(feature_filter)
-write.table(feature_filter,feature_out,row.names = FALSE,sep="\t",quote=FALSE)
+write.table(feature_merge,feature_out,row.names = FALSE,sep="\t",quote=FALSE)
 

@@ -1,1 +1,8 @@
-v1.0, 02.28.2020 -- Initial release.
+v1.0, 02.28.2020 
+- Initial release.
+
+v2.0, 02.29.2020
+- update two examples
+
+v3.0, 03.01.3030
+- update classifyloops.py, looppredictor.py, customized_gbrt_trainer.py
