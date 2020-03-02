@@ -2,6 +2,7 @@
 [![Travis CI](https://travis-ci.org/tterb/yt2mp3.svg?branch=master)](https://travis-ci.org/tterb/yt2mp3)
 [![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
+[![PyPi Downloads](http://pepy.tech/badge/yt2mp3)](http://pepy.tech/project/yt2mp3)
 
  Predicting unknown enhancer-mediated genome topology by an ensemble machine learning model
 
