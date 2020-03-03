@@ -16,9 +16,9 @@
  [3. Customize model for extensive research](#3-customize-model-for-extensive-research)
 
 ## What can LoopPredictor do?
-LoopPredictor is an ensemble machine learning model, used to predict enhancer mediated loops in a genome-wide fashion across different cell lines, which is also applicable to different model organisms.
- - Annotate current chromatin interactions and classify the loops into "e-p", "e-e", "p-p" and inactivate types through integrating the enrichment of active/inactive histone mark and distance to Transcription Start Sites(TSS), Which helped users to have a keen insight into topology structure of known cell type.
-- Predict chromatin interactions for the unknown cell types which lack of 3D profile, LoopPredictor was trained by HiChIP and multi-omics datasets from three cell types (K562, GM12878, HCT116), users only need to feed the multi-omics features of interested cell type into the pre-trained adaptive model, the sensitive predictions helped users to have a preliminary investigation of unknown chromatin interaction.
+LoopPredictor is an ensemble machine learning model, the model is able to efficiently identify cell type-specific enhancer mediated loops, and promoter-promoter interactions in a genome-wide fashion across different cell lines, which is also applicable to different model organisms.
+- Annotate current chromatin interactions and classify the loops into "e-p", "e-e", "p-p" and inactivate types through integrating a few multi-omic datasets, which helped users to have a keen insight into topology structure of known cell type.
+- Predict chromatin interactions for the unknown cell type which lacks of 3D profile, LoopPredictor was trained by HiChIP and multi-omics datasets from three cell types (K562, GM12878, HCT116), users only need to feed the multi-omics features of interested cell type into the pre-trained adaptive model, the sensitive predictions helped users to have a preliminary investigation of unknown chromatin interaction.
 - Construct customized models for an extensive prediction research. As 3D chromatin detecting technologies are developing at a high speed, LoopPredictor provided an open workframe for users to construct their own model, the features and targets could be organized as user-defined, and the self-adaptive parameters wil be chosen to tarin the model. After training, users can use the customized model to predict the topology structure of interest.
 
 
@@ -95,7 +95,7 @@ chr11	126078482	126084019	chr11	126210767	126227804
 #### *Step3: Running classification*
 The parameters of the script are as following,
 ```bash
-ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <integer>
+classifyloops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <integer>
 -l [string] loop file with ./bedpe format to be classified.
 -f [string] absolute path of the featureData folder.
 -g [string] genome of loops.
@@ -109,7 +109,7 @@ ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <in
 Here is a running example:
 ```bash
 cd LoopPredictor/
-python ./bin/classifyLoops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
+python ./bin/classifyloops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
                    -f /path/to/example/K562_classification_example/featureData \
                    -o /path/to/example/K562_classification_example -g hg19 -i 1
 ```
@@ -158,7 +158,7 @@ If you want to detect the enhancer-mediated interactions for a set of interested
 After preparing the input files, you can run the script "LoopPredictor.py" to perform the prediction.
 The parameters of the script are as following,
 ```bash
-LoopPredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <model> -c <cutoff> -o <output_name>
+looppredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <model> -c <cutoff> -o <output_name>
 -b [string] coordinate .bed file of a set of interested genes.
 -f [string] absolute path of the featureData folder.
 -g [string] genome of the features data.
@@ -170,7 +170,7 @@ LoopPredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <mo
 Here is a running example:
 ```bash
 cd LoopPredictor/
-python ./bin/LoopPredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
+python ./bin/looppredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
                    -f /path/to/example/NIH3T3_prediction_example/featureData \
                    -g mm10 \
                    -t /path/to/trained_model/features_median_forTraining.fix \
@@ -179,7 +179,7 @@ python ./bin/LoopPredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_
                    -o /path/to/example/NIH3T3_prediction_example
 ```
 ### 3. Customize model for extensive research
-The testing data were available in /example/HCT116_custom_model_example. The structure of folder was shown as below, \
+The testing data were available in /example/HCT116_custom_model_example. The structure of folder was shown as below, 
 ```bash
  example /
    HCT116_custom_model_example /
@@ -205,7 +205,7 @@ The multi-omics data for the corresponding cell line should be prepared in the f
 After preparing the input training data, you can run the script "Customized_GBRT_trainer.py" to train your own model.
 The parameters of the script are as following,
 ```bash
-Customized_GBRT_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_path> -n <output_name>
+customized_gbrt_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_path> -n <output_name>
 -t [string] target file of a set of loops with score to train the model, which is .bedpe format.
 -f [string] absolute path of the featureData folder.
 -g [string] genome of the features data.
@@ -215,7 +215,7 @@ Customized_GBRT_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_pa
 Here is a running example:
 ```bash
 cd LoopPredictor/
-python ./bin/Customized_GBRT_trainer.py -t /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
+python ./bin/customized_gbrt_trainer.py -t /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
                    -f /path/to/example/HCT116_custom_model_example/featureData \
                    -g hg19 \
                    -o /path/to/example/HCT116_custom_model_example \
