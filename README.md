@@ -108,8 +108,7 @@ classifyloops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <in
 ```
 Here is a running example:
 ```bash
-cd LoopPredictor/
-python ./bin/classifyloops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
+classifyloops -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
                    -f /path/to/example/K562_classification_example/featureData \
                    -o /path/to/example/K562_classification_example -g hg19 -i 1
 ```
@@ -128,7 +127,7 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
 ```
 
 #### *Step1: Choose the proper pre-trained model*
-We provided three typical pre-trained model for the prediction, which could be downloaded from this [link](https://drive.google.com/open?id=1hIAV68653JtI-FrWidJ8vitZJtmLHNiB). The model should be chosen to match the features you can get access to.
+We provided three typical pre-trained model and the corresponding .fix file for the prediction, which could be downloaded from this [link](https://drive.google.com/open?id=1hIAV68653JtI-FrWidJ8vitZJtmLHNiB). The model should be chosen to match the features you can get access to.
 
 pre-trained model | multi-omics features requirement
  ---- | ----- 
@@ -169,8 +168,7 @@ looppredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <mo
 ```
 Here is a running example:
 ```bash
-cd LoopPredictor/
-python ./bin/looppredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
+looppredictor -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
                    -f /path/to/example/NIH3T3_prediction_example/featureData \
                    -g mm10 \
                    -t /path/to/trained_model/features_median_forTraining.fix \
@@ -214,8 +212,7 @@ customized_gbrt_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_pa
 ```
 Here is a running example:
 ```bash
-cd LoopPredictor/
-python ./bin/customized_gbrt_trainer.py -t /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
+customized_gbrt_trainer -t /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
                    -f /path/to/example/HCT116_custom_model_example/featureData \
                    -g hg19 \
                    -o /path/to/example/HCT116_custom_model_example \
