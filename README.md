@@ -1,6 +1,7 @@
 <img src="/doc/lp_logo_horiz.png" width="35%">
 
 [![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
+[![PyPI version shields.io](https://img.shields.io/pypi/v/ansicolortags.svg)](https://pypi.python.org/pypi/ansicolortags/)
 
 Predicting unrecognized enhancer-mediated genome topology by an ensemble machine learning model
 
