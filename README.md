@@ -1,3 +1,4 @@
+![Test Image 1](/doc/lp_logo_horiz.png)
 # LoopPredictor
 Predicting unknown enhancer-mediated genome topology by an ensemble machine learning model
 
