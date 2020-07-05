@@ -1,5 +1,6 @@
 <img src="/doc/lp_logo_horiz.png" width="35%">
 Predicting unrecognized enhancer-mediated genome topology by an ensemble machine learning model
+[![GPLv3 license](https://img.shields.io/badge/License-GPLv3-blue.svg)](http://perso.crans.org/besson/LICENSE.html)
 
 ## Contents
 - [What can LoopPredictor do?](#What-can-LoopPredictor-do?)
