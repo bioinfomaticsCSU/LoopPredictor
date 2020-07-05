@@ -47,6 +47,10 @@ git clone https://github.com/bioinfomaticsCSU/LoopPredictor.git
 cd LoopPredictor
 python setup.py install
 ```
+or install LoopPredictor using *pip*:
+```bash
+pip install looppredictor
+```
 
 ## Example usage
 ### 1. Classifying loops for known chromatin interaction
