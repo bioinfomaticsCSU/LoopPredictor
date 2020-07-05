@@ -180,7 +180,7 @@ chr21 35439250 35465483 chr21 36693517 36722679 loop_name_5 3
 ```
 The multi-omics data for the corresponding cell line should be prepared in the featureData/ folder as mentioned [above](#step2-prepare-the-input-features).
 
-- *Step2: Running training workflow*
+- *Step2: Running training workflow*\
 After preparing the input training data, you can run the script "Customized_GBRT_trainer.py" to train your own model.
 The parameters of the script are as following,
 ```bash
