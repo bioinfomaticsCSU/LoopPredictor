@@ -32,7 +32,7 @@ LoopPrediction is built on Python 3 and R 3.6.2. Homer is also needed for the an
 The virtual environment of conda was recommended for the installation of LoopPredictor and its dependencies. A virtual environment can be created and (de)activated as follows by using [conda](https://conda.io/docs/):
 ```bash
 # create
-conda create -n LoopPredictor-env python=3.6 pandas numpy scikit-learn=0.20.3 joblib=0.20.3 pathos
+conda create -n LoopPredictor-env python=3.6 pandas numpy scikit-learn=0.20.3 pathos
 # activate
 conda activate LoopPredictor-env
 # deactivate
@@ -201,5 +201,5 @@ customized_gbrt_trainer -t /path/to/example/HCT116_custom_model_example/HCT116_c
                    -f /path/to/example/HCT116_custom_model_example/featureData \
                    -g hg19 \
                    -o /path/to/example/NIH3T3_prediction_example \
-                   -n /path/to/example/NIH3T3_prediction_example/HCT116_custom_model.m
+                   -n HCT116_custom_model
 ```
