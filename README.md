@@ -47,7 +47,7 @@ git clone https://github.com/bioinfomaticsCSU/LoopPredictor.git
 cd LoopPredictor
 python setup.py install
 ```
-or install LoopPredictor using *pip*:
+- Or install LoopPredictor using *pip*:
 ```bash
 pip install looppredictor
 ```
