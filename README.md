@@ -161,8 +161,8 @@ looppredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <mo
 -b [string] coordinate .bed file of a set of interested genes.
 -f [string] absolute path of the featureData folder.
 -g [string] genome of the features data.
--t [string] .fix file for the [pre-trained model](https://drive.google.com/open?id=1hIAV68653JtI-FrWidJ8vitZJtmLHNiB).
--m [string] the [pre-trained](https://drive.google.com/open?id=1hIAV68653JtI-FrWidJ8vitZJtmLHNiB) model chosen to use.
+-t [string] .fix file for the pre-trained model.
+-m [string] the pre-trained model chosen to use.
 -c [integer(>0)] the cutoff of loop score to filter the predicted output loops. 
 -o [string] path to save the output result.
 ```
