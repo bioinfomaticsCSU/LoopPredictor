@@ -87,7 +87,7 @@ chr11	126078482	126084019	chr11	126210767	126227804
 #### *Step3: Running classification*
 The parameters of the script are as following,
 ```bash
-classifyloops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <integer>
+classifyloops -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <integer>
 -l [string] loop file with ./bedpe format to be classified.
 -f [string] absolute path of the featureData folder.
 -g [string] genome of loops.
@@ -100,7 +100,7 @@ classifyloops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <in
 ```
 Here is a running example:
 ```bash
-classifyloops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
+classifyloops -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
                    -f /path/to/example/K562_classification_example/featureData \
                    -o /path/to/example/K562_classification_example -g hg19 -i 1
 ```
@@ -149,7 +149,7 @@ If you want to detect the enhancer-mediated interactions for a set of interested
 After preparing the input files, you can run the script "LoopPredictor.py" to perform the prediction.
 The parameters of the script are as following,
 ```bash
-looppredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <model> -c <cutoff> -o <output_name>
+looppredictor -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <model> -c <cutoff> -o <output_name>
 -b [string] coordinate .bed file of a set of interested genes.
 -f [string] absolute path of the featureData folder.
 -g [string] genome of the features data.
@@ -160,7 +160,7 @@ looppredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <mo
 ```
 Here is a running example:
 ```bash
-looppredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
+looppredictor -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
                    -f /path/to/example/NIH3T3_prediction_example/featureData \
                    -g mm10 \
                    -t /path/to/trained_model/features_median_forTraining.fix \
@@ -184,7 +184,7 @@ The multi-omics data for the corresponding cell line should be prepared in the f
 After preparing the input training data, you can run the script "Customized_GBRT_trainer.py" to train your own model.
 The parameters of the script are as following,
 ```bash
-customized_gbrt_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_path> -n <output_name>
+customized_gbrt_trainer -t <trainfile> -f <feature> -g <genome> -o <output_path> -n <output_name>
 -t [string] target file of a set of loops with score to train the model, which is .bedpe format.
 -f [string] absolute path of the featureData folder.
 -g [string] genome of the features data.
@@ -193,7 +193,7 @@ customized_gbrt_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_pa
 ```
 Here is a running example:
 ```bash
-customized_gbrt_trainer.py -b /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
+customized_gbrt_trainer -b /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
                    -f /path/to/example/HCT116_custom_model_example/featureData \
                    -g hg19 \
                    -o /path/to/example/NIH3T3_prediction_example \
