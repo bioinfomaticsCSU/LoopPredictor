@@ -9,23 +9,6 @@ feature_out<-Args[9]
 file_names<- list.files(tmp_folder)
 feature_merge<-read.csv(Args[6],sep="\t",header = FALSE)
 
-#interaction
-temp_df<-cbind(feature_merge,feature_merge)
-temp_df<-temp_df[1,]
-temp_df<-temp_df[-1,]
-for(i in 1:nrow(feature_merge)){
-  chrom<-feature_merge[i,1]
-  extract_chrom<-subset(feature_merge,feature_merge[,"V1"]==chrom)
-  for(j in 1:nrow(extract_chrom)){
-    if(feature_merge[i,2]<extract_chrom[j,2]){
-      temp<-cbind(feature_merge[i,],extract_chrom[j,])
-      temp_df<-rbind(temp_df,temp)
-    }
-  }
-}
-
-feature_merge<-temp_df
-
 feature_merge["window_size"]<-feature_merge[,5]-feature_merge[,3]
 #feature_merge<-subset(feature_merge,select=-c(1:7))
 colnames(feature_merge)<-c("chrom_a1","start_a1","end_a1","chrom_a2","start_a2","end_a2","window_size")
@@ -97,10 +80,10 @@ if(grepl(".*median.*m", model,ignore.case = TRUE)){
   }
 }
 
-feature_merge<-select_df
+#feature_merge<-select_df
 
 #feature_filter<-feature_merge
 #feature_filter<-feature_merge[, feature_merge [,num_27ac]>0 | feature_merge[,num_tss]<=2000]
 #feature_filter <- as.data.frame(feature_filter)
-write.table(feature_merge,feature_out,row.names = FALSE,sep="\t",quote=F)
+write.table(select_df,feature_out,row.names = FALSE,sep="\t",quote=F)
 

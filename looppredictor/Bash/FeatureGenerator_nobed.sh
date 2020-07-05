@@ -41,7 +41,7 @@ do
   if [[ "$filename" == *"k27ac"* ]]; then
     awk '{print $1"\t"$2"\t"$3}' $annoFile_path/$filename > $userpath/tmp3/target_bedr1.tmp
     sort -k1,1 -k2,2n $userpath/tmp3/target_bedr1.tmp > $userpath/tmp3/target_bedr1.sorted.tmp 
-    ./looppredictor/Bash/bedtools merge -d 5000 -i $userpath/tmp3/target_bedr1.sorted.tmp > $userpath/tmp3/target_bedr2.tmp
+    $basepath/Bash/bedtools merge -d 5000 -i $userpath/tmp3/target_bedr1.sorted.tmp > $userpath/tmp3/target_bedr2.tmp
     target_count=$(< "$userpath/tmp3/target_bedr2.tmp" wc -l)
     for i in $(seq 1 $target_count)
     do
@@ -62,15 +62,16 @@ do
         wait -n
     fi
     done
-    awk '{if(NF==6){print $1"\t"($2-2000)"\t"($3+2000)"\t"$4"\t"($5-2000)"\t"($6+2000)}}' $userpath/tmp3/target_comb.tmp > $userpath/tmp3/target_comb_final
-    sort -k1,1 -k2,2n -k3,3n -k4,4 -k5,5n -k6,6n $userpath/tmp3/target_comb_final > $userpath/tmp3/target_comb_final.sort 
-    targetFile=$userpath/tmp3/target_comb_final.sort
+    awk '{if(NF==6){print $1"\t"($2-2000)"\t"($3+2000)"\t"$4"\t"($5-2000)"\t"($6+2000)}}' $userpath/tmp3/target_comb.tmp > $userpath/tmp3/target_comb_final.tmp
+    sort -k1,1 -k2,2n -k3,3n -k4,4 -k5,5n -k6,6n $userpath/tmp3/target_comb_final.tmp > $userpath/tmp3/target_comb_final_sort.tmp
+    targetFile=$userpath/tmp3/target_comb_final_sort.tmp
     break
   fi
 done
 wait
 
 echo $targetFile
+cp $userpath/tmp3/target_comb_final_sort.tmp $userpath/log/target_comb_final_sort.tmp
 
 # annotate the regions by omics features
 for filename in $annoFile
@@ -83,7 +84,7 @@ wait
 echo "--------------Annotation done!----------------"
 
 # annotate the regions by homer
-target_temp=$userpath/tmp3/target_comb.tmp
+target_temp=$targetFile
 awk '{print $1"	"$2"	"$3}' $target_temp > $userpath/tmp3/anchor1.tmp
 awk '{print $4"	"$5"	"$6}' $target_temp > $userpath/tmp3/anchor2.tmp
 annotatePeaks.pl $userpath/tmp3/anchor1.tmp $genome  >  $userpath/tmp3/tmp_feature_tss_anchor1 &&
@@ -93,5 +94,5 @@ rm -f $userpath/tmp3/*.tmp
 
 # merging all the annotations
 echo "--------------Merging features!-----------------"
-Rscript $basepath/Rscript/MergeFeature_complete.R  $targetFile  $userpath/tmp3 $model $userpath/feature_out.txt
-
+Rscript $basepath/Rscript/MergeFeature_complete.R  $userpath/log/target_comb_final_sort.tmp  $userpath/tmp3 $model $userpath/feature_out.txt
+rm -f $userpath/log/*.tmp

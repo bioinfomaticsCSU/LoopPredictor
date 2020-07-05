@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='looppredictor',
-    version='0.3.14',
+    version='0.4.10',
     packages=setuptools.find_packages(),
     url='https://github.com/bioinfomaticsCSU/LoopPredictor/',
     author='Li Tang',

@@ -46,8 +46,6 @@ targetFile <- read.table(Args[6],sep="\t",header = FALSE)
   }
 targetRegion3[is.na(targetRegion3)] = 0
 targetRegion3 <- as.data.frame(targetRegion3)
-window_save_tmp<-paste(save_tmp,"_window")
-write.table(targetRegion3,window_save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 #######################################neighbor1
 print("parsing neighbor region1...")
   targetRegion1 <- GRanges(seqnames = targetFile[,1],strand = "+",ranges = IRanges(start = targetFile[,2]-2000,end = targetFile[,2]-1))
@@ -64,8 +62,6 @@ print("parsing neighbor region1...")
   }
 targetRegion1[is.na(targetRegion1)] = 0
 targetRegion1 <- as.data.frame(targetRegion1)
-neighbor1_save_tmp<-paste(save_tmp,"_neighbor1")
-write.table(targetRegion1,neighbor1_save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 #######################################neighbor2
 print("parsing neighbor region2...")
 targetRegion2 <- GRanges(seqnames = targetFile[,4],strand = "+",ranges = IRanges(start = targetFile[,6]+1,end = targetFile[,6]+2000))
@@ -83,8 +79,6 @@ targetRegion2 <- GRanges(seqnames = targetFile[,4],strand = "+",ranges = IRanges
   }
 targetRegion2[is.na(targetRegion2)] = 0
 targetRegion2 <- as.data.frame(targetRegion2)
-neighbor2_save_tmp<-paste(save_tmp,"_neighbor2")
-write.table(targetRegion2,neighbor2_save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 #######################################anchor1
 print("parsing neighbor anchor1...")
   targetRegion <- GRanges(seqnames = targetFile[,1],strand = "+",ranges = IRanges(start = targetFile[,2],end = targetFile[,3]))
@@ -110,8 +104,6 @@ print("parsing neighbor anchor1...")
 }
 targetRegion[is.na(targetRegion)] = 0
 targetRegion <- as.data.frame(targetRegion)
-anchor1_save_tmp<-paste(save_tmp,"_anchor1")
-write.table(targetRegion,anchor1_save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 #######################################anchor2
 print("parsing neighbor anchor2...")
   targetRegion4 <- GRanges(seqnames = targetFile[,4],strand = "+",ranges = IRanges(start = targetFile[,5],end = targetFile[,6]))
@@ -137,10 +129,8 @@ print("parsing neighbor anchor2...")
 }
 targetRegion4[is.na(targetRegion4)] = 0
 targetRegion4 <- as.data.frame(targetRegion4)
-anchor2_save_tmp<-paste(save_tmp,"_anchor2")
-write.table(targetRegion4,anchor2_save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 #########################################
-#target_total<-cbind(targetRegion, targetRegion4, targetRegion1, targetRegion3, targetRegion2)      #anchor1,2,neighbor1,window,neighbor2
-#write.table(target_total,save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
+target_total<-cbind(targetRegion, targetRegion4, targetRegion1, targetRegion3, targetRegion2)      #anchor1,2,neighbor1,window,neighbor2
+write.table(target_total,save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 
 
