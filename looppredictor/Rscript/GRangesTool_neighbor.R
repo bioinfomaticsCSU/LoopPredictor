@@ -5,36 +5,31 @@ annoFile<-Args[7]
 save_tmp<-Args[8]
 genome<-Args[9]
 
+
 save_path<-normalizePath(dirname(save_tmp))
 library(stringr)
 
+
 #library(TxDb.Hsapiens.UCSC.hg19.knownGene)
-library(TxDb.Mmusculus.UCSC.mm10.knownGene)
-
-targetFile <- read.table(Args[6],sep="\t",header = FALSE)
-
-#generate interactions
-temp_df<-cbind(targetFile,targetFile)
-temp_df<-temp_df[1,]
-temp_df<-temp_df[-1,]
-for(i in 1:nrow(targetFile)){
-  chrom<-targetFile[i,1]
-  extract_chrom<-subset(targetFile,targetFile[,"V1"]==chrom)
-  for(j in 1:nrow(extract_chrom)){
-    if(targetFile[i,2]<extract_chrom[j,2]){
-      temp<-cbind(targetFile[i,],extract_chrom[j,])
-      temp_df<-rbind(temp_df,temp)
-    }
-  }
+if(genome=="mm10"){
+  if (!requireNamespace("TxDb.Mmusculus.UCSC.mm10.knownGene", quietly = TRUE))
+    BiocManager::install("TxDb.Mmusculus.UCSC.mm10.knownGene")
+  
+  library("TxDb.Mmusculus.UCSC.mm10.knownGene")
+}else{
+  if (!requireNamespace("TxDb.Hsapiens.UCSC.hg19.knownGene", quietly = TRUE))
+    BiocManager::install("TxDb.Hsapiens.UCSC.hg19.knownGene")
+  
+  library("TxDb.Hsapiens.UCSC.hg19.knownGene")
 }
 
-targetFile<-temp_df
-write.table(targetFile,paste(save_path,"target.tmp",sep="/"),sep="\t",quote=FALSE,row.names=FALSE,col.names=FALSE)
+targetFile <- read.table(Args[6],sep="\t",header = FALSE)
 #row.names(targetFile)<-c(1:nrow(targetFile))
 #print(targetFile)
 
 #end_3<-as.numeric(column_num)+2
- #######################################window
+#######################################window
+  print("parsing window...")
   targetRegion3 <- GRanges(seqnames = targetFile[,1],strand = "+",ranges = IRanges(start = targetFile[,3]+1,end = targetFile[,5]-1))
   targetRegion3$mean <- NaN
   targetRegion3$sd <- NaN
@@ -51,7 +46,10 @@ write.table(targetFile,paste(save_path,"target.tmp",sep="/"),sep="\t",quote=FALS
   }
 targetRegion3[is.na(targetRegion3)] = 0
 targetRegion3 <- as.data.frame(targetRegion3)
+window_save_tmp<-paste(save_tmp,"_window")
+write.table(targetRegion3,window_save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 #######################################neighbor1
+print("parsing neighbor region1...")
   targetRegion1 <- GRanges(seqnames = targetFile[,1],strand = "+",ranges = IRanges(start = targetFile[,2]-2000,end = targetFile[,2]-1))
   targetRegion1$mean <- NaN
   targetRegion1$sd <- NaN
@@ -66,7 +64,10 @@ targetRegion3 <- as.data.frame(targetRegion3)
   }
 targetRegion1[is.na(targetRegion1)] = 0
 targetRegion1 <- as.data.frame(targetRegion1)
+neighbor1_save_tmp<-paste(save_tmp,"_neighbor1")
+write.table(targetRegion1,neighbor1_save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 #######################################neighbor2
+print("parsing neighbor region2...")
 targetRegion2 <- GRanges(seqnames = targetFile[,4],strand = "+",ranges = IRanges(start = targetFile[,6]+1,end = targetFile[,6]+2000))
   targetRegion2$mean <- NaN
   targetRegion2$sd <- NaN
@@ -82,7 +83,10 @@ targetRegion2 <- GRanges(seqnames = targetFile[,4],strand = "+",ranges = IRanges
   }
 targetRegion2[is.na(targetRegion2)] = 0
 targetRegion2 <- as.data.frame(targetRegion2)
+neighbor2_save_tmp<-paste(save_tmp,"_neighbor2")
+write.table(targetRegion2,neighbor2_save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 #######################################anchor1
+print("parsing neighbor anchor1...")
   targetRegion <- GRanges(seqnames = targetFile[,1],strand = "+",ranges = IRanges(start = targetFile[,2],end = targetFile[,3]))
   targetRegion$value <- NaN
   hitObj<- findOverlaps(targetRegion,annotationRegion)
@@ -106,7 +110,10 @@ targetRegion2 <- as.data.frame(targetRegion2)
 }
 targetRegion[is.na(targetRegion)] = 0
 targetRegion <- as.data.frame(targetRegion)
+anchor1_save_tmp<-paste(save_tmp,"_anchor1")
+write.table(targetRegion,anchor1_save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 #######################################anchor2
+print("parsing neighbor anchor2...")
   targetRegion4 <- GRanges(seqnames = targetFile[,4],strand = "+",ranges = IRanges(start = targetFile[,5],end = targetFile[,6]))
   targetRegion4$value <- NaN
   hitObj4<- findOverlaps(targetRegion4,annotationRegion)
@@ -130,8 +137,10 @@ targetRegion <- as.data.frame(targetRegion)
 }
 targetRegion4[is.na(targetRegion4)] = 0
 targetRegion4 <- as.data.frame(targetRegion4)
+anchor2_save_tmp<-paste(save_tmp,"_anchor2")
+write.table(targetRegion4,anchor2_save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 #########################################
-target_total<-cbind(targetRegion, targetRegion4, targetRegion1, targetRegion3, targetRegion2)      #anchor1,2,neighbor1,window,neighbor2
-write.table(target_total,save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
+#target_total<-cbind(targetRegion, targetRegion4, targetRegion1, targetRegion3, targetRegion2)      #anchor1,2,neighbor1,window,neighbor2
+#write.table(target_total,save_tmp,sep = "\t",quote = FALSE,row.names = FALSE)
 
 

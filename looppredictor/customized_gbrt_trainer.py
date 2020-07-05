@@ -54,7 +54,7 @@ def cleanOutlier(data,column,mul=3):
     print("-------------------------------------------------------------------")
     return data
 
-def main()
+def main():
     argv=sys.argv[1:]
     try:
         opts, args = getopt.getopt(argv, "t:f:g:o:n:",["trainfile=","feature=","genome=","output=","name="])

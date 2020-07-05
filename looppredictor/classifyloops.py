@@ -20,17 +20,17 @@ def main():
    loops = ''
    featurePath = ''
    genome= ''
-   output_name=''
-   integer = ''
+   output_path=''
+   integer = 1
    
    try:
-      opts, args = getopt.getopt(argv,"l:f:g:o:i:",["loops=","featurePath=","genome=","output_name=","integer="])
+      opts, args = getopt.getopt(argv,"l:f:g:o:i:",["loops=","featurePath=","genome=","output_path=","integer="])
    except getopt.GetoptError:
-      print ('ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <integer>')
+      print ('ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_path> -i <integer>')
       sys.exit(2)
    for opt, arg in opts:
       if opt == '-h':
-         print ('ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <integer>')
+         print ('ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_path> -i <integer>')
          sys.exit()
       elif opt in ("-l", "--loops"):
           loops = arg
@@ -49,18 +49,22 @@ def main():
       print ("loops: "+loops)
    else:
       print ("Please input the path of loop file!")
+      sys.exit()
    if featurePath!='':
       print ("featurePath: "+featurePath)
    else:
       print ("Please input the path of feature fold!")
+      sys.exit()
    if genome!='':
       print ("genome: " + genome)
    else:
       print ("Please input genome!")
+      sys.exit()
    if output_path!='':
       print ("output_path: " + output_path)
    else:
       print ("Please input output_path!")
+      sys.exit()
    if integer!='':
       print ("integer: " + integer)
    else:

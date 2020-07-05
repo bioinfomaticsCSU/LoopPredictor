@@ -18,19 +18,21 @@ def main():
    bedfile = ''
    featurePath = ''
    genome= ''
-   output_name=''
+   output_path='./'
    trainfile = ''
    model= ''
    cutoff=''
+   minsize="10000"
+   maxsize="5000000"
    argv=sys.argv[1:]
    try:
-      opts, args = getopt.getopt(argv,"b:f:o:g:t:m:c:",["bedfile=","featurePath=","outPath=","genome=","trainfile=","model=","cutoff="])
+      opts, args = getopt.getopt(argv,"b:f:o:g:t:m:c:s1:s2",["bedfile=","featurePath=","outPath=","genome=","trainfile=","model=","cutoff=","minsize=","maxsize="])
    except getopt.GetoptError:
-      print ('LoopPredictor.py -b <bedfile> -f <featurePath> -g <genome> -o <output_name> -t <trainfile> -m <model> -c <cutoff>')
+      print ('LoopPredictor.py -b <bedfile> -f <featurePath> -g <genome> -o <output_path> -t <trainfile> -m <model> -c <cutoff> -s1 <minsize> -s2 <maxsize>')
       sys.exit(2)
    for opt, arg in opts:
       if opt == '-h':
-         print ('LoopPredictor.py -b <bedfile> -f <featurePath>  -g <genome> -o <output_path> -t <trainfile> -m <model> -c <cutoff>')
+         print ('LoopPredictor.py -b <bedfile> -f <featurePath>  -g <genome> -o <output_path> -t <trainfile> -m <model> -c <cutoff> -s1 <minsize> -s2 <maxsize>')
          sys.exit()
       elif opt in ("-b", "--bedfile"):
           bedfile = arg
@@ -46,6 +48,10 @@ def main():
          model=arg
       elif opt in ("-c","--cutoff"):
          cutoff=arg
+      elif opt in ("-s1","--minsize"):
+         minsize=arg
+      elif opt in ("-s2","--maxsize"):
+         maxsize=arg
 
    print ("----------------------------Your parameters are:----------------------------")
    if bedfile !='':
@@ -56,26 +62,33 @@ def main():
       print ("featurePath: "+featurePath)
    else:
       print ("Please input the path of feature fold!")
+      sys.exit()
    if genome!='':
       print ("genome: " + genome)
    else:
       print ("Please input genome!")
-   if output_path!='':
-      print ("output_path: " + output_path)
-   else:
-      print ("Please input output_path!")
+      sys.exit()
    if trainfile!='':
       print ("trainfile: " + trainfile)
    else:
       print ("Please input the .fix file of trained model!")
+      sys.exit()
    if model!='':
       print ("model: " + model)
    else:
       print ("Please input a trained model!")
+      sys.exit()
    if cutoff!='':
       print ("cutoff: " + cutoff)
    else:
       print ("Please input a cutoff value to filter loops integer:[0-1000]!")
+
+   if output_path!='':
+      print ("output_path: " + output_path)
+   if minsize!='':
+      print ("minimum size of loops: " + minsize)
+   if maxsize!='':
+      print ("maximum size of loops: " + maxsize)
    
 
    #output_path = os.path.dirname(output)
@@ -85,7 +98,7 @@ def main():
    if(bedfile!=''):
       commandline=work_path+"/looppredictor/Bash/FeatureGenerator.sh " +bedfile+" "+featurePath+" "+output_path+" "+genome+" "+model
    else:
-      commandline=work_path+"/looppredictor/Bash/FeatureGenerator_nobed.sh " +featurePath+" "+output_path+" "+genome+" "+model
+      commandline=work_path+"/looppredictor/Bash/FeatureGenerator_nobed.sh " +featurePath+" "+output_path+" "+genome+" "+model+" "+minsize+" "+maxsize
    print ("commandline: "+commandline)
    flag=os.system(commandline)
    

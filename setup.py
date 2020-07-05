@@ -5,7 +5,7 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name='looppredictor',
-    version='0.3.13',
+    version='0.3.14',
     packages=setuptools.find_packages(),
     url='https://github.com/bioinfomaticsCSU/LoopPredictor/',
     author='Li Tang',
@@ -20,6 +20,7 @@ setuptools.setup(
     description='Predicting unknown enhancer-mediated genome topology by an ensemble machine learning model',
     long_description=long_description,
     long_description_content_type="text/markdown",
+    include_package_data = True,
 
     entry_points={
         'console_scripts': [

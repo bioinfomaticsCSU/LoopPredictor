@@ -1,8 +1,4 @@
-v1.0, 02.28.2020 
-- Initial release.
-
-v2.0, 02.29.2020
-- update two examples
-
-v3.0, 03.01.3030
-- update classifyloops.py, looppredictor.py, customized_gbrt_trainer.py
+v1.0, 02.28.2020 -- Initial release.
+v2.0, 03.03.2020 -- Update examples.
+v3.0, 05.21.2020 -- Update customized function.
+v4.0, 07.01.2020 -- For manuscript reviewing.

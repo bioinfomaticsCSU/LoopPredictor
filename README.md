@@ -1,36 +1,32 @@
-# <img src="doc/lp_logo_horiz.png" width="400">
-[![Travis CI](https://travis-ci.org/tterb/yt2mp3.svg?branch=master)](https://travis-ci.org/tterb/yt2mp3)
-[![GPLv3 License](https://img.shields.io/badge/License-GPL%20v3-yellow.svg)](https://opensource.org/licenses/)
-[![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
-
- Predicting unknown enhancer-mediated genome topology by an ensemble machine learning model
+# LoopPredictor
+Predicting unknown enhancer-mediated genome topology by an ensemble machine learning model
 
 ## Contents
-- [What can LoopPredictor do?](#what-can-looppredictor-do?)
-- [Installation](#installation)\
- [1. Create conda environment](#1-create-conda-environment)\
- [2. Install LoopPredictor](#2-install-looppredictor)
-- [Example usage](#example-usage)\
- [1. Classifying loops for known chromatin interaction](#1-classifying-loops-for-known-chromatin-interaction)\
- [2. Predicting loops for unknown cell types](#2-predicting-loops-for-unknown-cell-types)\
- [3. Customize model for extensive research](#3-customize-model-for-extensive-research)
+- [What can LoopPredictor do?](#What-can-LoopPredictor-do?)
+- [Installation](#Installation)\
+ [1. Create conda environment](#1.Create-conda-environment)\
+ [2. Install LoopPredictor](#2.Install-LoopPredictor)
+- [Example usage](#Example-usage)\
+ [1. Classifying loops for known chromatin interaction](#1.Classifying-loops-for-known-chromatin-interaction)\
+ [2. Predicting loops for unknown cell types](#2.Predicting-loops-for-unknown-cell-types)\
+ [3. Customize model for extensive research](#3.Customize-model-for-extensive-research)
 
 ## What can LoopPredictor do?
-LoopPredictor is an ensemble machine learning model, the model is able to efficiently identify cell type-specific enhancer mediated loops, and promoter-promoter interactions in a genome-wide fashion across different cell lines, which is also applicable to different model organisms.
-- Annotate current chromatin interactions and classify the loops into "e-p", "e-e", "p-p" and inactivate types through integrating a few multi-omic datasets, which helped users to have a keen insight into topology structure of known cell type.
-- Predict chromatin interactions for the unknown cell type which lacks of 3D profile, LoopPredictor was trained by HiChIP and multi-omics datasets from three cell types (K562, GM12878, HCT116), users only need to feed the multi-omics features of interested cell type into the pre-trained adaptive model, the sensitive predictions helped users to have a preliminary investigation of unknown chromatin interaction.
+LoopPredictor is an ensemble machine learning model, used to predict enhancer mediated loops in a genome-wide fashion across different cell lines, which is also applicable to different model organisms.
+ - Annotate current chromatin interactions and classify the loops into "e-p", "e-e", "p-p" and inactivate types through integrating the enrichment of active/inactive histone mark and distance to Transcription Start Sites(TSS), Which helped users to have a keen insight into topology structure of known cell type.
+- Predict chromatin interactions for the unknown cell types which lack of 3D profile, LoopPredictor was trained by HiChIP and multi-omics datasets from three cell types (K562, GM12878, HCT116), users only need to feed the multi-omics features of interested cell type into the pre-trained adaptive model, the sensitive predictions helped users to have a preliminary investigation of unknown chromatin interaction.
 - Construct customized models for an extensive prediction research. As 3D chromatin detecting technologies are developing at a high speed, LoopPredictor provided an open workframe for users to construct their own model, the features and targets could be organized as user-defined, and the self-adaptive parameters wil be chosen to tarin the model. After training, users can use the customized model to predict the topology structure of interest.
 
 
 ## Installation
 LoopPrediction is built on Python 3 and R 3.6.2. Homer is also needed for the annotation of chromatin regions.  
-   - **Prerequisites:**\
-       [Python](https://www.python.org/)(>=3.6.0), [R](https://www.r-project.org/)(>=3.6.2), [Homer](http://homer.ucsd.edu/homer/)
-   - **Dependencies:**\
+   - Prerequisites:\
+       [Python](https://www.python.org/)(>=3.4.0), [R](https://www.r-project.org/)(>=3.6.2), [Homer](http://homer.ucsd.edu/homer/)
+   - Dependencies:\
    **python packages:**
        [pandas](https://pandas.pydata.org/), [numpy](http://www.numpy.org/), [scikit-learn](https://scikit-learn.org/stable/), [pathos](https://pypi.org/project/pathos/)\
    **R packages:**
-       [stringr](https://stringr.tidyverse.org/), [BiocManager](https://cran.r-project.org/web/packages/BiocManager/vignettes/BiocManager.html), [GenomicRanges](https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html), [TxDb.Hsapiens](http://bioconductor.org/packages/release/data/annotation/html/TxDb.Hsapiens.UCSC.hg19.knownGene.html) (download the corresponding TxDb package for the species you want to predict)
+       [stringr](https://stringr.tidyverse.org/), [GenomicRanges](https://bioconductor.org/packages/release/bioc/html/GenomicRanges.html), [TxDb.Hsapiens](http://bioconductor.org/packages/release/data/annotation/html/TxDb.Hsapiens.UCSC.hg19.knownGene.html) (download the corresponding TxDb package for the species you want to predict)
 
 ### 1. Create conda environment
 The virtual environment of conda was recommended for the installation of LoopPredictor and its dependencies. A virtual environment can be created and (de)activated as follows by using [conda](https://conda.io/docs/):
@@ -50,10 +46,6 @@ The virtual environment can also be created by using [*virtualenv*](https://gith
 git clone https://github.com/bioinfomaticsCSU/LoopPredictor.git
 cd LoopPredictor
 python setup.py install
-```
-Or install from pip,
-```bash
-pip install looppredictor
 ```
 
 ## Example usage
@@ -95,7 +87,7 @@ chr11	126078482	126084019	chr11	126210767	126227804
 #### *Step3: Running classification*
 The parameters of the script are as following,
 ```bash
-classifyloops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <integer>
+ClassifyLoops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <integer>
 -l [string] loop file with ./bedpe format to be classified.
 -f [string] absolute path of the featureData folder.
 -g [string] genome of loops.
@@ -108,7 +100,8 @@ classifyloops.py -l <loops> -f <featurePath> -g <genome> -o <output_name> -i <in
 ```
 Here is a running example:
 ```bash
-classifyloops -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
+cd LoopPredictor/
+python ./bin/classifyLoops.py -l /path/to/example/K562_classification_example/K562_classifyLoop_example.bedpe \
                    -f /path/to/example/K562_classification_example/featureData \
                    -o /path/to/example/K562_classification_example -g hg19 -i 1
 ```
@@ -127,13 +120,13 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
 ```
 
 #### *Step1: Choose the proper pre-trained model*
-We provided three typical pre-trained model and the corresponding .fix file for the prediction, which could be downloaded from this [link](https://drive.google.com/open?id=1hIAV68653JtI-FrWidJ8vitZJtmLHNiB). The model should be chosen to match the features you can get access to.
+We provided three typical pre-trained model for the prediction, which could be found in folder /trained_model/. The model should be chosen to match the features you can get access to.
 
 pre-trained model | multi-omics features requirement
  ---- | ----- 
- Minimum model | -ATAC-seq/DNase-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3)
- Median model  | -ATAC-seq/DNase-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3K4me1,H3K9ac,H3K9me3,CTCF), -RNA-seq
- Maximum model | -ATAC-seq/DNase-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3k4me2,H3K4me1,H3K9ac,H3K9me3,H3K36me3,H3K79me2,CTCF,ELF1,JUND,MAX,YY1), -RNA-seq, -Methylation
+ Minimum model | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3)
+ Median model  | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3K4me1,H3K9ac,H3K9me3,CTCF), -RNA-seq
+ Maximum model | -ATAC-seq, -ChIP-seq/CUT&RUN(H3K27ac,H3K4me3,H3k4me2,H3K4me1,H3K9ac,H3K9me3,H3K36me3,H3K79me2,CTCF,ELF1,JUND,MAX,YY1), -RNA-seq, -Methylation
 
 #### *Step2: Prepare the input features*
 The multi-omics features data should be put into folder featureData/.
@@ -157,7 +150,7 @@ If you want to detect the enhancer-mediated interactions for a set of interested
 After preparing the input files, you can run the script "LoopPredictor.py" to perform the prediction.
 The parameters of the script are as following,
 ```bash
-looppredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <model> -c <cutoff> -o <output_name>
+LoopPredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <model> -c <cutoff> -o <output_name>
 -b [string] coordinate .bed file of a set of interested genes.
 -f [string] absolute path of the featureData folder.
 -g [string] genome of the features data.
@@ -168,7 +161,8 @@ looppredictor.py -b <bedfile> -f <featurePath> -g <genome> -t <trainfile> -m <mo
 ```
 Here is a running example:
 ```bash
-looppredictor -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
+cd LoopPredictor/
+python ./bin/LoopPredictor.py -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.bed \
                    -f /path/to/example/NIH3T3_prediction_example/featureData \
                    -g mm10 \
                    -t /path/to/trained_model/features_median_forTraining.fix \
@@ -177,17 +171,6 @@ looppredictor -b /path/to/example/NIH3T3_prediction_example/NIH_geneEnh_example.
                    -o /path/to/example/NIH3T3_prediction_example
 ```
 ### 3. Customize model for extensive research
-The testing data were available in /example/HCT116_custom_model_example. The structure of folder was shown as below, 
-```bash
- example /
-   HCT116_custom_model_example /
-     featureData /                          # [necessary input]features of corresonding cell line input for training model
-     tmp /                                  # [intermediate]temporary files generated within running
-     log /                                  # [intermediate]log files generated within running
-     *.bedpe                                # [necessary input]input bed file of interested regions for loops prediction
-     feature_out.txt                        # [intermediate]features are extracted from files within running
-     *.m                                    # [output]the name of output model
-```
 - *Step1: prepare trianing data*\
 The training data contains target and multi-omics data, target file shoule be the chromatin interactions in ./bedpe format, which is the prior knowledge to train the model. The target file should be 8 columns without head line, the final column must be the score of interaction, which is important for the prediction, shown as below,
 ```bash
@@ -203,7 +186,7 @@ The multi-omics data for the corresponding cell line should be prepared in the f
 After preparing the input training data, you can run the script "Customized_GBRT_trainer.py" to train your own model.
 The parameters of the script are as following,
 ```bash
-customized_gbrt_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_path> -n <output_name>
+Customized_GBRT_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_path> -n <output_name>
 -t [string] target file of a set of loops with score to train the model, which is .bedpe format.
 -f [string] absolute path of the featureData folder.
 -g [string] genome of the features data.
@@ -212,9 +195,10 @@ customized_gbrt_trainer.py -t <trainfile> -f <feature> -g <genome> -o <output_pa
 ```
 Here is a running example:
 ```bash
-customized_gbrt_trainer -t /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
+cd LoopPredictor/
+python ./bin/Customized_GBRT_trainer.py -b /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
                    -f /path/to/example/HCT116_custom_model_example/featureData \
                    -g hg19 \
-                   -o /path/to/example/HCT116_custom_model_example \
-                   -n /path/to/example/HCT116_custom_model_example/HCT116_custom_model.m
+                   -o /path/to/example/NIH3T3_prediction_example \
+                   -n /path/to/example/NIH3T3_prediction_example/HCT116_custom_model.m
 ```
