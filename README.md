@@ -193,7 +193,7 @@ customized_gbrt_trainer -t <trainfile> -f <feature> -g <genome> -o <output_path>
 ```
 Here is a running example:
 ```bash
-customized_gbrt_trainer -b /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
+customized_gbrt_trainer -t /path/to/example/HCT116_custom_model_example/HCT116_custom_example.bedpe \
                    -f /path/to/example/HCT116_custom_model_example/featureData \
                    -g hg19 \
                    -o /path/to/example/NIH3T3_prediction_example \
