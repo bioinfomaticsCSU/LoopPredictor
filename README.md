@@ -1,4 +1,4 @@
-<img src="/doc/lp_logo.png" width="20%">
+<img src="/doc/lp_logo.png" width="25%">
 Predicting unrecognized enhancer-mediated genome topology by an ensemble machine learning model
 
 ## Contents
