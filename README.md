@@ -128,7 +128,7 @@ The testing data were available in /example/NIH3T3_prediction_example. The struc
 ```
 
 #### *Step1: Choose the proper pre-trained model*
-We provided three typical pre-trained model for the prediction, which could be found in folder /trained_model/. The model should be chosen to match the features you can get access to.
+We provided three typical pre-trained model for the prediction, which could be found in folder [trained_model](https://drive.google.com/drive/folders/1hIAV68653JtI-FrWidJ8vitZJtmLHNiB?usp=sharing). The model should be chosen to match the features you can get access to.
 
 pre-trained model | multi-omics features requirement
  ---- | ----- 
