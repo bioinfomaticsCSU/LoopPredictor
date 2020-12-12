@@ -5,6 +5,7 @@
 [![Python 3.6](https://img.shields.io/badge/python-3.6-blue.svg)](https://www.python.org/downloads/release/python-360/)
 
 Predicting unrecognized enhancer-mediated genome topology by an ensemble machine learning model
+
 Genome Res. December 2020 30: 1835-1845, doi:10.1101/gr.264606.120
 
 ## Contents
